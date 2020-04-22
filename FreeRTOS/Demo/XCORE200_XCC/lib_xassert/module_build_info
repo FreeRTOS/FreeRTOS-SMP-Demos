@@ -1,0 +1,14 @@
+VERSION = 4.0.0
+
+DEPENDENT_MODULES =
+
+MODULE_XCC_FLAGS = $(XCC_FLAGS)
+
+OPTIONAL_HEADERS += debug_conf.h \
+                    xassert_conf.h
+
+EXPORT_INCLUDE_DIRS = api
+
+INCLUDE_DIRS = $(EXPORT_INCLUDE_DIRS)
+
+SOURCE_DIRS = src

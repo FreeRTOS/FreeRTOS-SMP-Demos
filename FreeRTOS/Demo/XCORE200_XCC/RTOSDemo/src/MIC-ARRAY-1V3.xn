@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xmos.com http://www.xmos.com" ManuallySpecifiedRouting="true">
+  <Type>Board</Type>
+  <Name>Microphone Array Reference Hardware (XUF216)</Name>
+  <Declarations>
+    <Declaration>tileref tile[2]</Declaration>
+    <Declaration>tileref usb_tile</Declaration>
+  </Declarations>
+  <Packages>
+    <Package id="0" Type="XS2-UnA-512-FB236">
+      <Nodes>
+        <Node Id="0" InPackageId="0" Type="XS2-L16A-512" Oscillator="24MHz" SystemFrequency="500MHz" referencefrequency="100MHz">
+          <Boot>
+            <Source Location="bootFlash"/>
+          </Boot>
+          <Tile Number="0" Reference="tile[0]">
+            <!-- Quad flash ports -->
+            <Port Location="XS1_PORT_1B" Name="PORT_SQI_CS"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_SQI_SCLK"/>
+            <Port Location="XS1_PORT_4B" Name="PORT_SQI_SIO"/>
+
+            <!-- LED ports -->
+            <Port Location="XS1_PORT_8C" Name="PORT_LED0_TO_7"/>
+            <Port Location="XS1_PORT_1K" Name="PORT_LED8"/>
+            <Port Location="XS1_PORT_1L" Name="PORT_LED9"/>
+            <Port Location="XS1_PORT_8D" Name="PORT_LED10_TO_12"/>
+            <Port Location="XS1_PORT_1P" Name="PORT_LED_OEN"/>
+
+            <!-- Button ports -->
+            <Port Location="XS1_PORT_4A" Name="PORT_BUT_A_TO_D"/>
+
+            <!-- Mic related ports -->
+            <Port Location="XS1_PORT_1E" Name="PORT_PDM_CLK"/>
+            <Port Location="XS1_PORT_8B" Name="PORT_PDM_DATA"/>
+            <Port Location="XS1_PORT_1F" Name="PORT_MCLK_TILE0"/>
+
+            <!-- Expansion header ports -->
+            <Port Location="XS1_PORT_1G" Name="PORT_EXPANSION_1"/>
+            <Port Location="XS1_PORT_1H" Name="PORT_EXPANSION_3"/>
+            <Port Location="XS1_PORT_1A" Name="PORT_EXPANSION_5"/>
+            <Port Location="XS1_PORT_1D" Name="PORT_EXPANSION_7"/>
+            <Port Location="XS1_PORT_1I" Name="PORT_EXPANSION_9"/>
+            <Port Location="XS1_PORT_1P" Name="PORT_EXPANSION_10"/>
+            <Port Location="XS1_PORT_1J" Name="PORT_EXPANSION_12"/>
+
+          </Tile>
+
+          <Tile Number="1" Reference="tile[1]">
+            <!-- USB ports -->
+            <Port Location="XS1_PORT_1H"  Name="PORT_USB_TX_READYIN"/>
+            <Port Location="XS1_PORT_1J"  Name="PORT_USB_CLK"/>
+            <Port Location="XS1_PORT_1K"  Name="PORT_USB_TX_READYOUT"/>
+            <Port Location="XS1_PORT_1I"  Name="PORT_USB_RX_READY"/>
+            <Port Location="XS1_PORT_1E"  Name="PORT_USB_FLAG0"/>
+            <Port Location="XS1_PORT_1F"  Name="PORT_USB_FLAG1"/>
+            <Port Location="XS1_PORT_1G"  Name="PORT_USB_FLAG2"/>
+            <Port Location="XS1_PORT_8A"  Name="PORT_USB_TXD"/>
+            <Port Location="XS1_PORT_8B"  Name="PORT_USB_RXD"/>
+
+            <!-- Audio Ports -->
+            <Port Location="XS1_PORT_4D"  Name="PORT_PLL_REF"/>
+            <Port Location="XS1_PORT_1O"  Name="PORT_MCLK_IN"/>
+            <Port Location="XS1_PORT_1N"  Name="PORT_I2S_LRCLK"/>
+            <Port Location="XS1_PORT_1M"  Name="PORT_I2S_BCLK"/>
+            <Port Location="XS1_PORT_1P"  Name="PORT_I2S_DAC0"/>
+            <Port Location="XS1_PORT_16B" Name="PORT_MCLK_COUNT"/>
+
+            <!-- I2C Bus -->
+            <Port Location="XS1_PORT_4E"  Name="PORT_I2C"/>
+
+            <!-- Shared Reset -->
+            <Port Location="XS1_PORT_4F"  Name="PORT_SHARED_RESET"/>
+
+            <!-- Ethernet Ports -->
+            <Port Location="XS1_PORT_1A" Name="PORT_ETH_RXCLK"/>
+            <Port Location="XS1_PORT_4A" Name="PORT_ETH_RXD"/>
+            <Port Location="XS1_PORT_4B" Name="PORT_ETH_TXD"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_ETH_RXDV"/>
+            <Port Location="XS1_PORT_1D" Name="PORT_ETH_TXEN"/>
+            <Port Location="XS1_PORT_1B" Name="PORT_ETH_TXCLK"/>
+            <Port Location="XS1_PORT_1K" Name="PORT_ETH_RXERR"/>
+            <Port Location="XS1_PORT_8C" Name="PORT_ETH_DUMMY"/>
+
+            <Port Location="XS1_PORT_4C" Name="PORT_SMI"/>
+
+          </Tile>
+        </Node>
+        <Node Id="1" InPackageId="1" Type="periph:XS1-SU" Reference="usb_tile" Oscillator="24MHz">
+        </Node>
+      </Nodes>
+      <Links>
+        <Link Encoding="5wire">
+          <LinkEndpoint NodeId="0" Link="8" Delays="52clk,52clk"/>
+          <LinkEndpoint NodeId="1" Link="XL0" Delays="1clk,1clk"/>
+        </Link>
+      </Links>
+    </Package>
+  </Packages>
+  <Nodes>
+    <Node Id="2" Type="device:" RoutingId="0x8000">
+      <Service Id="0" Proto="xscope_host_data(chanend c);">
+        <Chanend Identifier="c" end="3"/>
+      </Service>
+    </Node>
+  </Nodes>
+  <Links>
+    <Link Encoding="2wire" Delays="5clk" Flags="XSCOPE">
+      <LinkEndpoint NodeId="0" Link="XL0"/>
+      <LinkEndpoint NodeId="2" Chanend="1"/>
+    </Link>
+  </Links>
+  <ExternalDevices>
+    <Device NodeId="0" Tile="0" Class="SQIFlash" Name="bootFlash" Type="IS25LQ016B">
+      <Attribute Name="PORT_SQI_CS" Value="PORT_SQI_CS"/>
+      <Attribute Name="PORT_SQI_SCLK"   Value="PORT_SQI_SCLK"/>
+      <Attribute Name="PORT_SQI_SIO"  Value="PORT_SQI_SIO"/>
+    </Device>
+  </ExternalDevices>
+  <JTAGChain>
+    <JTAGDevice NodeId="0"/>
+  </JTAGChain>
+</Network>

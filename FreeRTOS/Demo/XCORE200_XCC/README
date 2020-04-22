@@ -1,0 +1,29 @@
+Prerequisites:
+
+  - XMOS xTIMEcomposer 14.4.1 is required to build the demo. Earlier versions
+    may work but have not been tested.
+
+  - The demo runs on the xCORE microphone array evaluation board which can be
+    purchased here:
+https://www.digikey.com/product-detail/en/xmos/XK-USB-MIC-UF216/880-1120-ND/6005986?WT.srch=1&gclid=CjwKCAiA__HvBRACEiwAbViuU9mCl1oBzpSyQyRvIgnW1eKtlawvm7HzzSbotDbksJR3hiyt6KUUaBoCiTQQAvD_BwE
+
+  - Plug the xTAG programmer into the evaluation board. Ensure both the xTAG
+    and evaluation board are connected to the computer via USB.
+
+To build and run the demo:
+
+With the xTIMEcomposer IDE:
+
+  - Create a workspace in this directory (FreeRTOS/Demo/XCORE200_XCC)
+  - Import the 5 projects (RTOSDemo, lib_rtos_support, lib_trycatch,
+    lib_xassert, lib_xcore_c).
+  - Build the RTOSDemo project.
+  - Create a run configuration for the resulting RTOSDemo/bin/RTOSDemo.xe
+    binary. Make sure xSCOPE Target I/O option is selected.
+
+From the command line:
+
+  - cd into the RTOSDemo directory
+  - Build the demo by running `xmake'
+  - Run the demo with `xrun --xscope bin/RTOSDemo.xe'
+
