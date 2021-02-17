@@ -4,42 +4,6 @@
 [submodule "FreeRTOS/Test/CMock/CMock"]
 	path = FreeRTOS/Test/CMock/CMock
 	url = https://github.com/ThrowTheSwitch/CMock.git
-[submodule "FreeRTOS-Plus/Source/FreeRTOS-Plus-TCP"]
-	path = FreeRTOS-Plus/Source/FreeRTOS-Plus-TCP
-	url = https://github.com/FreeRTOS/FreeRTOS-Plus-TCP
-[submodule "FreeRTOS-Plus/Source/AWS/device-shadow"]
-	path = FreeRTOS-Plus/Source/AWS/device-shadow
-	url = https://github.com/aws/device-shadow-for-aws-iot-embedded-sdk
-[submodule "FreeRTOS-Plus/Source/Application-Protocols/coreMQTT"]
-	path = FreeRTOS-Plus/Source/Application-Protocols/coreMQTT
-	url = https://github.com/FreeRTOS/coreMQTT
-[submodule "FreeRTOS-Plus/Source/coreJSON"]
-	path = FreeRTOS-Plus/Source/coreJSON
-	url = https://github.com/FreeRTOS/coreJSON
-[submodule "FreeRTOS-Plus/Test/CMock"]
-	path = FreeRTOS-Plus/Test/CMock
-	url = https://github.com/ThrowTheSwitch/CMock
-[submodule "FreeRTOS-Plus/ThirdParty/mbedtls"]
-	path = FreeRTOS-Plus/ThirdParty/mbedtls
-	url = https://github.com/ARMmbed/mbedtls
-[submodule "FreeRTOS-Plus/Source/Application-Protocols/corePKCS11"]
-	path = FreeRTOS-Plus/Source/corePKCS11
-	url = https://github.com/FreeRTOS/corePKCS11.git
-[submodule "FreeRTOS-Plus/Source/AWS/jobs"]
-	path = FreeRTOS-Plus/Source/AWS/jobs
-	url = https://github.com/aws/jobs-for-aws-iot-embedded-sdk.git
-[submodule "FreeRTOS-Plus/Source/AWS/device-defender"]
-	path = FreeRTOS-Plus/Source/AWS/device-defender
-	url = https://github.com/aws/device-defender-for-aws-iot-embedded-sdk.git
-[submodule "FreeRTOS-Plus/Source/Application-Protocols/coreHTTP"]
-	path = FreeRTOS-Plus/Source/Application-Protocols/coreHTTP
-	url = https://github.com/FreeRTOS/coreHTTP
-[submodule "FreeRTOS-Plus/Source/Utilities/backoff_algorithm"]
-	path = FreeRTOS-Plus/Source/Utilities/backoff_algorithm
-	url = https://github.com/FreeRTOS/backoffAlgorithm.git
-[submodule "FreeRTOS-Plus/ThirdParty/wolfSSL"]
-	path = FreeRTOS-Plus/ThirdParty/wolfSSL
-	url = https://github.com/wolfSSL/wolfssl.git
 [submodule "FreeRTOS/Test/aws-build-accumulator"]
 	path = FreeRTOS/Test/litani
 	url = https://github.com/awslabs/aws-build-accumulator.git
