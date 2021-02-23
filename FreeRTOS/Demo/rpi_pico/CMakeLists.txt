@@ -11,7 +11,7 @@ project(PicoTest VERSION 1.0.0)
 add_executable(PicoTest source.c)
  
 # Link the Project to an extra library (pico_stdlib)
-target_link_libraries(PicoTest pico_stdlib)
+target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port)
 
 set(KERNEL_PATH ../../Source)
 include_directories(AFTER ${KERNEL_PATH}/include)

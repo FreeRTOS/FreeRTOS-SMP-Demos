@@ -230,3 +230,17 @@ FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-bs2_default-Debug-f16d1b
 FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS_CM0-Debug-c3facba98226787ec8c8.json
 FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS-Debug-8177269e06670eebd606.json
 FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-PicoTest-Debug-696b09cd641e04bbad61.json
+FreeRTOS/Demo/rpi_pico/build/CMakeCache.txt
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/cache-v2-a3535cd137378c51dcf0.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/codemodel-v2-920978c3dea31a473a01.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/index-2021-02-23T18-18-31-0198.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS_port-Debug-13878ffc371d3242c2db.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS-Debug-0e64a4c3c0bf247e2e84.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-PicoTest-Debug-7d3f756ebca20a8779da.json
+FreeRTOS/Demo/rpi_pico/build/kernel_port/libFreeRTOS_port.a
+FreeRTOS/Demo/rpi_pico/build/kernel_port/CMakeFiles/FreeRTOS_port.dir/port.c.obj
+FreeRTOS/Demo/rpi_pico/build/CMakeCache.txt
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/cache-v2-a2af7951b5cf2f93ed7c.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/codemodel-v2-879e81ebdf27496f4e3b.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/index-2021-02-23T19-34-10-0227.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-PicoTest-Debug-51c1ea3fe8a4aadaa20d.json
