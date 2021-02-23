@@ -1,5 +1,8 @@
 #include "source.h"
 
+#include "freertos.h"
+#include "task.h"
+
 int main() {
     stdio_init_all();
     while (true) {

@@ -222,3 +222,11 @@ FreeRTOS/Demo/rpi_pico/build/pico-sdk/src/rp2_common/pico_stdlib/cmake_install.c
 FreeRTOS/Demo/rpi_pico/build/pico-sdk/src/rp2_common/pico_unique_id/cmake_install.cmake
 FreeRTOS/Demo/rpi_pico/build/pico-sdk/src/rp2_common/tinyusb/cmake_install.cmake
 FreeRTOS/Demo/rpi_pico/build/pico-sdk/tools/cmake_install.cmake
+FreeRTOS/Demo/rpi_pico/build/CMakeCache.txt
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/cache-v2-c64b988e85924fdbf356.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/codemodel-v2-2d96277c3a8db1a15ba1.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/index-2021-02-23T16-43-46-0243.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-bs2_default-Debug-f16d1b2ce06d6acb38f8.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS_CM0-Debug-c3facba98226787ec8c8.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-FreeRTOS-Debug-8177269e06670eebd606.json
+FreeRTOS/Demo/rpi_pico/build/.cmake/api/v1/reply/target-PicoTest-Debug-696b09cd641e04bbad61.json

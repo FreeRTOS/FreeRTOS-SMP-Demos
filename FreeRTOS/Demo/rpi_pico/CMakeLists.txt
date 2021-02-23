@@ -14,7 +14,7 @@ add_executable(PicoTest source.c)
 target_link_libraries(PicoTest pico_stdlib)
 
 set(KERNEL_PATH ../../Source)
-
+include_directories(AFTER ${KERNEL_PATH}/include)
 include_directories(AFTER ${KERNEL_PATH}/portable/GCC/ARM_CM0)
 include_directories(AFTER .)
 # Get the FreeRTOS Kernel
