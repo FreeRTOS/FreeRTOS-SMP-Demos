@@ -18,9 +18,9 @@ set(KERNEL_PATH ../../Source)
 include_directories(AFTER ${KERNEL_PATH}/portable/GCC/ARM_CM0)
 include_directories(AFTER .)
 # Get the FreeRTOS Kernel
-add_subdirectory(${KERNEL_PATH})
+add_subdirectory(${KERNEL_PATH} kernel)
 # Get the FreeRTOS Kernel Port for Cortex M0+
-add_subdirectory(${KERNEL_PATH}/portable/GCC/ARM_CM0)
+add_subdirectory(${KERNEL_PATH}/portable/GCC/ARM_CM0 kernel_port)
 
 # Initalise the SDK
 pico_sdk_init()
