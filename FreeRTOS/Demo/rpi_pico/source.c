@@ -143,20 +143,25 @@ void pongTask(void *pvParameters)
 
 void blinkTask(void *pvParameters)
 {
-  QueueHandle_t ledCommands = (QueueHandle_t) pvParameters;
-  while(true)
-  {
-    bool command;
-    xQueueReceive(ledCommands, &command, portMAX_DELAY);
-    if(command)
+    QueueHandle_t ledCommands = (QueueHandle_t) pvParameters;
+    
+    const uint LED_PIN = 25;
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    while(true)
     {
-      //Set a pin high
+        bool command;
+        xQueueReceive(ledCommands, &command, portMAX_DELAY);
+        if(command)
+        {
+            gpio_put(LED_PIN, 1);
+        }
+        else
+        {
+            gpio_put(LED_PIN, 0);
+        }
     }
-    else
-    {
-      //Set a pin low
-    }
-  }
 }
 
 void helloTask(void *pvParameters)
