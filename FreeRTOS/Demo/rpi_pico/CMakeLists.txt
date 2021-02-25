@@ -9,9 +9,8 @@ project(PicoTest VERSION 1.0.0)
  
 # Link the Project to a source file (step 4.6)
 add_executable(PicoTest source.c)
- 
-# Link the Project to an extra library (pico_stdlib)
-target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port)
+
+set(SUPPORT_DYNAMIC_ALLOCATION false)
 
 set(KERNEL_PATH ../../Source)
 include_directories(AFTER ${KERNEL_PATH}/include)
@@ -21,6 +20,15 @@ include_directories(AFTER .)
 add_subdirectory(${KERNEL_PATH} kernel)
 # Get the FreeRTOS Kernel Port for Cortex M0+
 add_subdirectory(${KERNEL_PATH}/portable/GCC/ARM_CM0 kernel_port)
+
+if(SUPPORT_DYNAMIC_ALLOCATION)
+# Link the Project to an extra library (pico_stdlib)
+set(heap1_enabled TRUE)
+add_subdirectory(${KERNEL_PATH}/portable/MemMang kernel_memmang)
+target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port FreeRTOS_MemMang)
+else()
+target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port)
+endif()
 
 # Initalise the SDK
 pico_sdk_init()
