@@ -27,7 +27,7 @@ set(heap1_enabled TRUE)
 add_subdirectory(${KERNEL_PATH}/portable/MemMang kernel_memmang)
 target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port FreeRTOS_MemMang)
 else()
-target_link_libraries(PicoTest pico_stdlib FreeRTOS FreeRTOS_port)
+target_link_libraries(PicoTest pico_stdlib pico_multicore FreeRTOS FreeRTOS_port)
 endif()
 
 # Initalise the SDK
