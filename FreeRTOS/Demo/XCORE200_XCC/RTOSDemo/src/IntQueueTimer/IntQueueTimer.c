@@ -8,27 +8,37 @@
 
 #include "IntQueue.h"
 
-static hwtimer_t xIntQueueTimer0;
-static hwtimer_t xIntQueueTimer1;
-
 DEFINE_RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR, pvData )
 {
+	static int xCount0, xCount1;
 	hwtimer_t xTimer = ( hwtimer_t ) pvData;
 	uint32_t ulNow;
-	int xYieldRequired;
+	int xYieldRequired = pdFALSE;
 
 	ulNow = hwtimer_get_time( xTimer );
     ulNow = hwtimer_get_trigger_time( xTimer );
+	ulNow += configCPU_CLOCK_HZ / 50;
 
-	if ( xTimer == xIntQueueTimer0 )
+	if( ++xCount0 == 2 )
 	{
-		ulNow += configCPU_CLOCK_HZ / 100;
-		xYieldRequired = xFirstTimerHandler();
+		xCount0 = 0;
+		taskENTER_CRITICAL_FROM_ISR();
+		if( xFirstTimerHandler() != pdFALSE )
+		{
+			xYieldRequired = pdTRUE;
+		}
+		taskEXIT_CRITICAL_FROM_ISR( 0 );
 	}
-	else
+
+	if( ++xCount1 == 3 )
 	{
-		ulNow += configCPU_CLOCK_HZ / 150;
-		xYieldRequired = xSecondTimerHandler();
+		xCount1 = 0;
+		taskENTER_CRITICAL_FROM_ISR();
+		if( xSecondTimerHandler() != pdFALSE )
+		{
+			xYieldRequired = pdTRUE;
+		}
+		taskEXIT_CRITICAL_FROM_ISR( 0 );
 	}
 
 	hwtimer_change_trigger_time( xTimer, ulNow );
@@ -39,19 +49,21 @@ DEFINE_RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR, pvData )
 void vInitialiseTimerForIntQueueTest( void )
 {
 uint32_t ulNow;
+uint32_t ulState;
+hwtimer_t xIntQueueTimer;
 
-	xIntQueueTimer0 = hwtimer_alloc();
-	ulNow = hwtimer_get_time( xIntQueueTimer0 );
-	ulNow += configCPU_CLOCK_HZ / 100;
-	triggerable_setup_interrupt_callback( xIntQueueTimer0, ( void * ) xIntQueueTimer0, RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR ) );
-	hwtimer_set_trigger_time( xIntQueueTimer0, ulNow );
-	triggerable_enable_trigger( xIntQueueTimer0 );
-
-	xIntQueueTimer1 = hwtimer_alloc();
-	ulNow = hwtimer_get_time( xIntQueueTimer1 );
-	ulNow += configCPU_CLOCK_HZ / 150;
-	triggerable_setup_interrupt_callback( xIntQueueTimer1, ( void * ) xIntQueueTimer1, RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR ) );
-	hwtimer_set_trigger_time( xIntQueueTimer1, ulNow );
-	triggerable_enable_trigger( xIntQueueTimer1 );
+	/*
+	 * Disable interrupts here so we stay on the same core
+	 */
+	ulState = portDISABLE_INTERRUPTS();
+	{
+		xIntQueueTimer = hwtimer_alloc();
+		ulNow = hwtimer_get_time( xIntQueueTimer );
+		ulNow += configCPU_CLOCK_HZ / 50;
+	    triggerable_setup_interrupt_callback( xIntQueueTimer, ( void * ) xIntQueueTimer, RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR ) );
+	    hwtimer_set_trigger_time( xIntQueueTimer, ulNow );
+	    triggerable_enable_trigger( xIntQueueTimer );
+	}
+	portRESTORE_INTERRUPTS( ulState );
 }
 

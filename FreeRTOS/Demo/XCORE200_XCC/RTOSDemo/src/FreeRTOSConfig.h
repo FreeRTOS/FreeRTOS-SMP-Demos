@@ -3,14 +3,18 @@
 
 /* Here is a good place to include header files that are required across
 your application. */
+#ifndef __XC__
 #include <xcore/assert.h>
+#endif
 
 #define configUSE_PREEMPTION                    1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configUSE_TICKLESS_IDLE                 0
 #define configCPU_CLOCK_HZ                      100000000
+#define configNUM_CORES                         7
 #define configTICK_RATE_HZ                      1000
 #define configMAX_PRIORITIES                    32
+#define configRUN_MULTIPLE_PRIORITIES           0
 #define configMINIMAL_STACK_SIZE                ( configSTACK_DEPTH_TYPE ) 256
 #define configMAX_TASK_NAME_LEN                 16
 #define configUSE_16_BIT_TICKS                  0
