@@ -1,6 +1,4 @@
-FreeRTOS includes libraries that are part of the [FreeRTOS 202012.00 LTS](https://github.com/FreeRTOS/FreeRTOS-LTS/tree/202012.00-LTS) release. Learn more about the FreeRTOS 202012.00 LTS libraries at [https://freertos.org/lts-libraries.html](https://freertos.org/lts-libraries.html).
-
-(??)
+This is a lab repo that represents a work in progress to support the SMP activities in the SMP branch of the FreeRTOS Kernel Repo.  Please do not expect everything to work in this repo.
 
 ## Getting started
 The [FreeRTOS.org](https://www.freertos.org) website contains contains a [FreeRTOS Kernel Quick Start Guide](https://www.freertos.org/FreeRTOS-quick-start-guide.html), a [list of supported devices and compilers](https://www.freertos.org/RTOS_ports.html), the [API reference](https://www.freertos.org/a00106.html), and many other resources.
@@ -15,11 +13,11 @@ This repo uses [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodu
 
 To clone using HTTPS:
 ```
-git clone https://github.com/FreeRTOS/FreeRTOS.git --recurse-submodules
+git clone https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP.git --recurse-submodules
 ```
 Using SSH:
 ```
-git clone git@github.com:FreeRTOS/FreeRTOS.git --recurse-submodules
+git clone git@github.com:FreeRTOS/Lab-Project-FreeRTOS-SMP.git --recurse-submodules
 ```
 
 If you have downloaded the repo without using the `--recurse-submodules` argument, you need to run:
@@ -31,7 +29,7 @@ git submodule update --init --recursive
 This repository contains the FreeRTOS Kernel, a number of supplementary libraries, and a comprehensive set of example applications.  Many libraries (including the FreeRTOS kernel) are included as Git submodules from their own Git repositories.
 
 ### Kernel source code and example projects
-```FreeRTOS/Source``` contains the FreeRTOS kernel source code (submoduled from https://github.com/FreeRTOS/FreeRTOS-Kernel).
+```FreeRTOS/Source``` contains the FreeRTOS kernel source code (submoduled from https://github.com/FreeRTOS/FreeRTOS-Kernel SMP branch).
 
 ```FreeRTOS/Demo``` contains pre-configured example projects that demonstrate the FreeRTOS kernel executing on different hardware platforms and using different compilers.
 
@@ -39,9 +37,6 @@ This repository contains the FreeRTOS Kernel, a number of supplementary librarie
 ```FreeRTOS-Plus/Source``` contains source code for additional FreeRTOS component libraries, as well as select partner provided libraries. These subdirectories contain further readme files and links to documentation.
 
 ```FreeRTOS-Plus/Demo``` contains pre-configured example projects that demonstrate the FreeRTOS kernel used with the additional FreeRTOS component libraries.
-
-## Previous releases
-[Releases](https://github.com/FreeRTOS/FreeRTOS/releases) contains older FreeRTOS releases.
 
 
 ## FreeRTOS Lab Projects
