@@ -14,12 +14,12 @@ set(SUPPORT_DYNAMIC_ALLOCATION false)
 
 set(KERNEL_PATH ../../Source)
 include_directories(AFTER ${KERNEL_PATH}/include)
-include_directories(AFTER ${KERNEL_PATH}/portable/GCC/ARM_CM0)
+include_directories(AFTER ${KERNEL_PATH}/portable/ThirdParty/GCC/rpi_pico)
 include_directories(AFTER .)
 # Get the FreeRTOS Kernel
 add_subdirectory(${KERNEL_PATH} kernel)
 # Get the FreeRTOS Kernel Port for Cortex M0+
-add_subdirectory(${KERNEL_PATH}/portable/GCC/ARM_CM0 kernel_port)
+add_subdirectory(${KERNEL_PATH}/portable/ThirdParty/GCC/rpi_pico kernel_port)
 
 if(SUPPORT_DYNAMIC_ALLOCATION)
 # Link the Project to an extra library (pico_stdlib)
