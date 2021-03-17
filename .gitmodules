@@ -10,3 +10,4 @@
 	path = FreeRTOS/Test/litani
 	url = https://github.com/awslabs/aws-build-accumulator.git
 	branch = mainline
+	update = rebase
