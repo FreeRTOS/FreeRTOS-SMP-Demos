@@ -22,4 +22,3 @@ __pycache__/
 # Ignore certificate files.
 *.pem
 *.crt
-FreeRTOS/Demo/rpi_pico/build/
