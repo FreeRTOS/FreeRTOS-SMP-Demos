@@ -44,6 +44,10 @@
 #define testingmainENABLE_STREAMBUFFER_TASKS			1
 #define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS	1
 #define testingmainENABLE_TASK_NOTIFY_TASKS				1
+<<<<<<< HEAD
+=======
+#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS	1
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 #define testingmainENABLE_TIMER_DEMO_TASKS				1
 
 /*** These tests run on all tiles ***/

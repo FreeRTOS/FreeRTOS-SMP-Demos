@@ -1,9 +1,16 @@
 Prerequisites:
 
+<<<<<<< HEAD
   - XMOS xTIMEcomposer 14.4.1 is required to build the demo. Earlier versions
     may work but have not been tested.
 
   - The demo runs on the xCORE microphone array evaluation board which can be
+=======
+  - XMOS xTIMEcomposer 15.0.6 is required to build the demo. Earlier and later
+    versions may work but have not been tested.
+
+  - The demo runs on the XCore microphone array evaluation board which can be
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
     purchased here:
 https://www.digikey.com/product-detail/en/xmos/XK-USB-MIC-UF216/880-1120-ND/6005986?WT.srch=1&gclid=CjwKCAiA__HvBRACEiwAbViuU9mCl1oBzpSyQyRvIgnW1eKtlawvm7HzzSbotDbksJR3hiyt6KUUaBoCiTQQAvD_BwE
 
@@ -12,6 +19,7 @@ https://www.digikey.com/product-detail/en/xmos/XK-USB-MIC-UF216/880-1120-ND/6005
 
 To build and run the demo:
 
+<<<<<<< HEAD
 With the xTIMEcomposer IDE:
 
   - Create a workspace in this directory (FreeRTOS/Demo/XCORE200_XCC)
@@ -23,6 +31,8 @@ With the xTIMEcomposer IDE:
 
 From the command line:
 
+=======
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
   - cd into the RTOSDemo directory
   - Build the demo by running `xmake'
   - Run the demo with `xrun --xscope bin/RTOSDemo.xe'

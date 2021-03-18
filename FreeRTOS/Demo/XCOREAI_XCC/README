@@ -1,0 +1,16 @@
+Prerequisites:
+
+  - XMOS xTIMEcomposer 15.0.6 is required to build the demo. Earlier and later
+    versions may work but have not been tested.
+
+  - The demo runs on the xcore.ai Explorer board.
+
+  - Plug the xTAG programmer into the evaluation board. Ensure both the xTAG
+    and evaluation board are connected to the computer via USB.
+
+To build and run the demo:
+
+  - cd into the RTOSDemo directory
+  - Build the demo by running `xmake'
+  - Run the demo with `xrun --xscope bin/RTOSDemo.xe'
+

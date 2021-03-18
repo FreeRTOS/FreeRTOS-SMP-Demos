@@ -4,6 +4,10 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+<<<<<<< HEAD
+=======
+#include <xcore/chanend.h>
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #include "limits.h"
 #include "testing_main.h"
@@ -33,11 +37,19 @@
 #include "StreamBufferDemo.h"
 #include "StreamBufferInterrupt.h"
 #include "TaskNotify.h"
+<<<<<<< HEAD
 #include "TimerDemo.h"
 #include "TimerDemoISR.h"
 #include "regtest.h"
 
 void vParTestInitialiseXCORE( int tile, chanend xTile0Chan, chanend xTile1Chan, chanend xTile2Chan, chanend xTile3Chan );
+=======
+#include "TaskNotifyArray.h"
+#include "TimerDemo.h"
+#include "regtest.h"
+
+void vParTestInitialiseXCORE( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan );
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 #define vParTestInitialise vParTestInitialiseXCORE
 
 /* Flag for errors occuring locally */
@@ -67,10 +79,17 @@ void vApplicationIdleHook( void );
  */
 static uint32_t prvCheckTasks( int tile, uint32_t ulErrorFound );
 
+<<<<<<< HEAD
 static void prvSetupHardware( int tile, chanend xTile0Chan, chanend xTile1Chan, chanend xTile2Chan, chanend xTile3Chan );
 
 
 int c_main( int tile, chanend xTile0Chan, chanend xTile1Chan, chanend xTile2Chan, chanend xTile3Chan )
+=======
+static void prvSetupHardware( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan );
+
+
+int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan )
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 {
 	prvSetupHardware( tile, xTile0Chan, xTile1Chan, xTile2Chan, xTile3Chan );
 
@@ -176,8 +195,16 @@ int c_main( int tile, chanend xTile0Chan, chanend xTile1Chan, chanend xTile2Chan
 				vStartTaskNotifyTask();
 			#endif
 
+<<<<<<< HEAD
 			#if( testingmainENABLE_TIMER_DEMO_TASKS == 1 )
 				vInitialiseTimerISRForTimerDemo();
+=======
+			#if( testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS == 1 )
+				vStartTaskNotifyArrayTask();
+			#endif
+
+			#if( testingmainENABLE_TIMER_DEMO_TASKS == 1 )
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 				vStartTimerDemoTask( mainTIMER_DEMO_TASK_FREQ );
 			#endif
 
@@ -262,7 +289,11 @@ int i = 0;
 /*-----------------------------------------------------------*/
 
 /* Setup any hardware specific to tests here */
+<<<<<<< HEAD
 static void prvSetupHardware( int tile, chanend xTile0Chan, chanend xTile1Chan, chanend xTile2Chan, chanend xTile3Chan )
+=======
+static void prvSetupHardware( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan )
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 {
 	vParTestInitialise( tile, xTile0Chan, xTile1Chan, xTile2Chan, xTile3Chan );
 }
@@ -457,6 +488,17 @@ static uint32_t prvCheckTasks( int tile, uint32_t ulErrorFound )
 				}
 			#endif
 
+<<<<<<< HEAD
+=======
+			#if( testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS == 1 )
+				if( xAreTaskNotificationArrayTasksStillRunning() != pdTRUE )
+				{
+					rtos_printf( "Task notification array task failed\n" );
+					ulErrorFound |= 1UL << 28UL;
+				}
+			#endif
+
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 			#if( testingmainENABLE_TIMER_DEMO_TASKS == 1 )
 				if( xAreTimerDemoTasksStillRunning( mainTIMER_DEMO_TASK_FREQ ) != pdTRUE )
 				{
@@ -613,11 +655,28 @@ void vApplicationTickHook( void )
 			vQueueSetPollingInterruptAccess();
 		#endif
 
+<<<<<<< HEAD
+=======
+		#if( testingmainENABLE_TIMER_DEMO_TASKS == 1 )
+			/* The full demo includes a software timer demo/test that requires
+			prodding periodically from the tick interrupt. */
+			vTimerPeriodicISRTests();
+		#endif
+
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 		#if( testingmainENABLE_TASK_NOTIFY_TASKS == 1 )
 			/* Use task notifications from an interrupt. */
 			xNotifyTaskFromISR();
 		#endif
 
+<<<<<<< HEAD
+=======
+		#if( testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS == 1 )
+			/* Use task notifications from an interrupt. */
+			xNotifyArrayTaskFromISR();
+		#endif
+
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 		#if( testingmainENABLE_STREAMBUFFER_TASKS == 1 )
 			/* Writes to stream buffer byte by byte to test the stream buffer trigger
 			level functionality. */

@@ -3,7 +3,10 @@
 #include <platform.h>
 
 #include "rtos_printf.h"
+<<<<<<< HEAD
 #include "xcore_c.h"
+=======
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 #include "testing_main.h"
 
 extern "C" {

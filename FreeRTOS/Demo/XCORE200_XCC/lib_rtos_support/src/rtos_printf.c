@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // Copyright (c) 2014-2019, XMOS Ltd, All rights reserved
+=======
+// Copyright 2014 XMOS LIMITED. This Software is subject to the terms of the 
+// XMOS Public License: Version 1
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /*---------------------------------------------------*/
 /* Modified from :                                   */
@@ -249,7 +254,11 @@ static int32_t getnum(char **linep)
 /* the supported formats.                            */
 /*                                                   */
 
+<<<<<<< HEAD
 static size_t rtos_vsnwprintf(char *str, size_t size, int writeout, const char *fmt, va_list ap)
+=======
+static int rtos_vsnwprintf(char *str, size_t size, int writeout, const char *fmt, va_list ap)
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 {
     int32_t Check;
 #if LONG64
@@ -303,7 +312,11 @@ static size_t rtos_vsnwprintf(char *str, size_t size, int writeout, const char *
 
         if (isdigit((int32_t)ch) != 0) {
             if (dot_flag != 0) {
+<<<<<<< HEAD
                 par.num2 = getnum(&ctrl);
+=======
+				par.num2 = getnum(&ctrl);
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
             }
             else {
                 if (ch == '0') {
@@ -320,6 +333,14 @@ static size_t rtos_vsnwprintf(char *str, size_t size, int writeout, const char *
             goto try_next;
         }
 
+<<<<<<< HEAD
+=======
+        if (dot_flag != 0 && ch == '*') {
+			par.num2 = va_arg(ap, int32_t);
+            goto try_next;
+        }
+
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
         switch (tolower((int32_t)ch)) {
             case '%':
                 outbyte('%', &par);
@@ -417,8 +438,13 @@ static size_t rtos_vsnwprintf(char *str, size_t size, int writeout, const char *
                 break;
 
             default:
+<<<<<<< HEAD
         Check = 1;
         break;
+=======
+				Check = 1;
+				break;
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
         }
         if(Check == 1) {
             if(ctrl != NULL) {
@@ -437,9 +463,15 @@ static size_t rtos_vsnwprintf(char *str, size_t size, int writeout, const char *
 }
 /*---------------------------------------------------*/
 
+<<<<<<< HEAD
 size_t rtos_snprintf(char *str, size_t size, const char *fmt, ...)
 {
     size_t len;
+=======
+int rtos_snprintf(char *str, size_t size, const char *fmt, ...)
+{
+    int len;
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
     va_list ap;
 
     va_start(ap, fmt);
@@ -449,9 +481,15 @@ size_t rtos_snprintf(char *str, size_t size, const char *fmt, ...)
     return len;
 }
 
+<<<<<<< HEAD
 size_t rtos_sprintf(char *str, const char *fmt, ...)
 {
     size_t len;
+=======
+int rtos_sprintf(char *str, const char *fmt, ...)
+{
+    int len;
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
     va_list ap;
 
     va_start(ap, fmt);
@@ -469,9 +507,15 @@ size_t rtos_sprintf(char *str, const char *fmt, ...)
 #endif
 #endif
 
+<<<<<<< HEAD
 size_t rtos_vprintf(const char *fmt, va_list ap)
 {
     size_t len;
+=======
+int rtos_vprintf(const char *fmt, va_list ap)
+{
+    int len;
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
     uint32_t mask;
     char buf[RTOS_PRINTF_BUFSIZE];
 
@@ -485,9 +529,15 @@ size_t rtos_vprintf(const char *fmt, va_list ap)
     return len;
 }
 
+<<<<<<< HEAD
 size_t rtos_printf(const char *fmt, ...)
 {
     size_t len;
+=======
+int rtos_printf(const char *fmt, ...)
+{
+    int len;
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
     va_list ap;
 
     va_start(ap, fmt);

@@ -1,6 +1,10 @@
 VERSION = 0.5.0
 
+<<<<<<< HEAD
 DEPENDENT_MODULES = lib_xcore_c(>=2.0.0)
+=======
+DEPENDENT_MODULES = 
+>>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 MODULE_XCC_FLAGS = $(XCC_FLAGS) -Os
 
