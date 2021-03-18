@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-// Copyright (c) 2014-2019, XMOS Ltd, All rights reserved
-=======
 // Copyright 2014 XMOS LIMITED. This Software is subject to the terms of the 
 // XMOS Public License: Version 1
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #ifndef _rtos_printf_h_
 #define _rtos_printf_h_
@@ -89,43 +85,27 @@ extern "C" {
  * Just like snprintf, but not all of the
  * standard C format control are supported.
  */
-<<<<<<< HEAD
-size_t rtos_snprintf(char *str, size_t size, const char *fmt, ...);
-=======
 int rtos_snprintf(char *str, size_t size, const char *fmt, ...);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /**
  * Just like sprintf, but not all of the
  * standard C format control are supported.
  */
-<<<<<<< HEAD
-size_t rtos_sprintf(char *str, const char *fmt, ...);
-=======
 int rtos_sprintf(char *str, const char *fmt, ...);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /**
  * Just like vprintf, but not all of the
  * standard C format control are supported.
  */
 #ifndef __XC__
-<<<<<<< HEAD
-size_t rtos_vprintf(const char *fmt, va_list ap);
-=======
 int rtos_vprintf(const char *fmt, va_list ap);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 #endif
 
 /**
  * Just like printf, but not all of the
  * standard C format control are supported.
  */
-<<<<<<< HEAD
-size_t rtos_printf(const char *fmt, ...);
-=======
 int rtos_printf(const char *fmt, ...);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #if defined(__cplusplus) || defined(__XC__)
 }

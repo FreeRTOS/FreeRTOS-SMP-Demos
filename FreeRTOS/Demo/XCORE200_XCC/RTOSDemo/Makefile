@@ -10,17 +10,10 @@ KERNEL_ROOT = .././.././.././Source
 COMMON_DEMO_ROOT = .././.././Common
 PORTABLE_ROOT = $(KERNEL_ROOT)/portable
 MEMMANG_ROOT = $(PORTABLE_ROOT)/MemMang
-<<<<<<< HEAD
-XCC_PORT_ROOT = $(PORTABLE_ROOT)/ThirdParty/XMOS_XCC/XCORE200
-
-SOURCE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/TimerDemoISR $(DEMO_ROOT)/partest $(DEMO_ROOT)/regtest $(COMMON_DEMO_ROOT)/Minimal $(KERNEL_ROOT) $(XCC_PORT_ROOT) $(MEMMANG_ROOT)
-INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/TimerDemoISR $(DEMO_ROOT)/regtest $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) $(COMMON_DEMO_ROOT)/include
-=======
 XCC_PORT_ROOT = $(PORTABLE_ROOT)/XCC/XCORE200
 
 SOURCE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/partest $(DEMO_ROOT)/regtest $(COMMON_DEMO_ROOT)/Minimal $(KERNEL_ROOT) $(XCC_PORT_ROOT) $(MEMMANG_ROOT)
 INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/regtest $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) $(COMMON_DEMO_ROOT)/include
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 EXCLUDE_FILES += ../../../Source/portable/MemMang/heap_1.c  \
                  ../../../Source/portable/MemMang/heap_2.c  \
@@ -40,11 +33,7 @@ EXCLUDE_FILES += ../../../Source/portable/MemMang/heap_1.c  \
 
 XCC_FLAGS = -O2 -g -report -fxscope
 
-<<<<<<< HEAD
-USED_MODULES = lib_rtos_support  lib_trycatch  lib_xassert  lib_xcore_c
-=======
 USED_MODULES = lib_rtos_support
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 VERBOSE = 0
 

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-// Copyright (c) 2019, XMOS Ltd, All rights reserved
-=======
 // Copyright 2019 XMOS LIMITED. This Software is subject to the terms of the 
 // XMOS Public License: Version 1
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #ifndef RTOS_LOCKS_H_
 #define RTOS_LOCKS_H_
@@ -11,13 +7,8 @@
 #if !defined(__XC__)
 
 #include "rtos_support_rtos_config.h"
-<<<<<<< HEAD
-#include "xcore_c.h"
-#include "xassert.h"
-=======
 #include <xcore/lock.h>
 #include <xcore/assert.h>
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #ifndef RTOS_LOCK_COUNT
 #error You must define RTOS_LOCK_COUNT in rtos_support_rtos_config.h

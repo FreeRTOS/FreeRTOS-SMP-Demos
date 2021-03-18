@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-// Copyright (c) 2019, XMOS Ltd, All rights reserved
-=======
 // Copyright 2019 XMOS LIMITED. This Software is subject to the terms of the 
 // XMOS Public License: Version 1
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #ifndef RTOS_CORES_H_
 #define RTOS_CORES_H_
 
-<<<<<<< HEAD
-#include "xcore_c.h"
-
-=======
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 /* The maximum number of cores an SMP RTOS may use */
 #define RTOS_MAX_CORE_COUNT 8
 

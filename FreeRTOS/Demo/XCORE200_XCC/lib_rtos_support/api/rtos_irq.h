@@ -1,18 +1,10 @@
-<<<<<<< HEAD
-// Copyright (c) 2019, XMOS Ltd, All rights reserved
-=======
 // Copyright 2019 XMOS LIMITED. This Software is subject to the terms of the 
 // XMOS Public License: Version 1
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 #ifndef RTOS_IRQ_H_
 #define RTOS_IRQ_H_
 
-<<<<<<< HEAD
-#include "xcore_c.h"
-=======
 #include <xcore/chanend.h>
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /**
  * IRQ ISR callback function pointer type.
@@ -55,11 +47,7 @@ void rtos_irq(int core_id, int source_id);
  * \param dest_chanend  The channel end used by the peripheral to receive
  *                      the interrupt.
  */
-<<<<<<< HEAD
-void rtos_irq_peripheral(chanend dest_chanend);
-=======
 void rtos_irq_peripheral(chanend_t dest_chanend);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /**
  * This function registers a non-RTOS IRQ source. The source ID
@@ -75,11 +63,7 @@ void rtos_irq_peripheral(chanend_t dest_chanend);
  * peripheral needs to send an IRQ.
  */
 
-<<<<<<< HEAD
-int rtos_irq_register(rtos_irq_isr_t isr, void *data, chanend source_chanend);
-=======
 int rtos_irq_register(rtos_irq_isr_t isr, void *data, chanend_t source_chanend);
->>>>>>> d65f82bc8d6d34a00091a8191f4ba9c4f97d4588
 
 /**
  * This function enables the calling core to receive RTOS IRQs. It
