@@ -3,14 +3,14 @@ TARGET = MIC-ARRAY-1V3
 
 APP_NAME = RTOSDemo
 
-BASE_DIR = $(abspath .)
+#BASE_DIR = $(abspath .)
 
 DEMO_ROOT = src
 KERNEL_ROOT = .././.././.././Source
 COMMON_DEMO_ROOT = .././.././Common
 PORTABLE_ROOT = $(KERNEL_ROOT)/portable
 MEMMANG_ROOT = $(PORTABLE_ROOT)/MemMang
-XCC_PORT_ROOT = $(PORTABLE_ROOT)/XCC/XCORE200
+XCC_PORT_ROOT = $(PORTABLE_ROOT)/ThirdParty/XCC/XCORE200
 
 SOURCE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/partest $(DEMO_ROOT)/regtest $(COMMON_DEMO_ROOT)/Minimal $(KERNEL_ROOT) $(XCC_PORT_ROOT) $(MEMMANG_ROOT)
 INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/regtest $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) $(COMMON_DEMO_ROOT)/include
@@ -35,7 +35,7 @@ XCC_FLAGS = -O2 -g -report -fxscope
 
 USED_MODULES = lib_rtos_support
 
-VERBOSE = 0
+VERBOSE = 1
 
 XMOS_MAKE_PATH ?= ../..
 -include $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common
