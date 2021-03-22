@@ -1,5 +1,0 @@
-
-VERSION = 2.0.0
-
-DEPENDENT_MODULES = lib_trycatch(>=1.0.0) lib_xassert(>=2.0.1)
-INCLUDE_DIRS = src api
