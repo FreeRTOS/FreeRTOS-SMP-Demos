@@ -3,6 +3,9 @@ Prerequisites:
   - XMOS xTIMEcomposer 15.0.6 is required to build the demo. Earlier and later
     versions may work but have not been tested.
 
+  - GNU Make. A makefile is included to build this application, which requires
+    that make be on the path. On Windows this may require building in a bash
+    terminal, rather than in the Windows command prompt.
   - The demo runs on the XCore microphone array evaluation board which can be
     purchased here:
 https://www.digikey.com/product-detail/en/xmos/XK-USB-MIC-UF216/880-1120-ND/6005986?WT.srch=1&gclid=CjwKCAiA__HvBRACEiwAbViuU9mCl1oBzpSyQyRvIgnW1eKtlawvm7HzzSbotDbksJR3hiyt6KUUaBoCiTQQAvD_BwE
@@ -13,6 +16,6 @@ https://www.digikey.com/product-detail/en/xmos/XK-USB-MIC-UF216/880-1120-ND/6005
 To build and run the demo:
 
   - cd into the RTOSDemo directory
-  - Build the demo by running `xmake'
-  - Run the demo with `xrun --xscope bin/RTOSDemo.xe'
+  - Build the demo by running `make'
+  - Run the demo with `make run'
 

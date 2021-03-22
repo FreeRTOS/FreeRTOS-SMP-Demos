@@ -3,40 +3,112 @@ TARGET = MIC-ARRAY-1V3
 
 APP_NAME = RTOSDemo
 
-#BASE_DIR = $(abspath .)
+BUILD_DIR = build
+OUT_DIR = bin
 
 DEMO_ROOT = src
-KERNEL_ROOT = .././.././.././Source
-COMMON_DEMO_ROOT = .././.././Common
+KERNEL_ROOT = ../../../Source
+COMMON_DEMO_ROOT = ../../Common
+MINIMAL_DEMO_ROOT = $(COMMON_DEMO_ROOT)/Minimal
 PORTABLE_ROOT = $(KERNEL_ROOT)/portable
 MEMMANG_ROOT = $(PORTABLE_ROOT)/MemMang
 XCC_PORT_ROOT = $(PORTABLE_ROOT)/ThirdParty/XCC/XCORE200
+RTOS_SUPPORT_ROOT = ../lib_rtos_support
 
-SOURCE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/partest $(DEMO_ROOT)/regtest $(COMMON_DEMO_ROOT)/Minimal $(KERNEL_ROOT) $(XCC_PORT_ROOT) $(MEMMANG_ROOT)
-INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/regtest $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) $(COMMON_DEMO_ROOT)/include
+INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/regtest \
+               $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) \
+               $(COMMON_DEMO_ROOT)/include \
+               $(RTOS_SUPPORT_ROOT)/api $(RTOS_SUPPORT_ROOT)/src
 
-EXCLUDE_FILES += ../../../Source/portable/MemMang/heap_1.c  \
-                 ../../../Source/portable/MemMang/heap_2.c  \
-                 ../../../Source/portable/MemMang/heap_3.c  \
-                 ../../../Source/portable/MemMang/heap_5.c  \
-                 ../../Common/Minimal/comtest.c             \
-                 ../../Common/Minimal/comtest_strings.c     \
-                 ../../Common/Minimal/crflash.c             \
-                 ../../Common/Minimal/crhook.c              \
-                 ../../Common/Minimal/flash.c               \
-                 ../../Common/Minimal/flash_timer.c         \
-                 ../../Common/Minimal/MessageBufferAMP.c    \
-                 ../../Common/Minimal/sp_flop.c             \
-                 ../../Common/Minimal/StaticAllocation.c
-                 
-                 
+APP_SOURCES = $(DEMO_ROOT)/main.xc \
+              $(DEMO_ROOT)/test.c \
+              $(DEMO_ROOT)/IntQueueTimer/IntQueueTimer.c \
+              $(DEMO_ROOT)/partest/mab_led_driver.xc \
+              $(DEMO_ROOT)/partest/partest.c \
+              $(DEMO_ROOT)/regtest/prvRegisterCheck_asm1.S \
+              $(DEMO_ROOT)/regtest/prvRegisterCheck_asm2.S \
+              $(DEMO_ROOT)/regtest/regtest.c
 
-XCC_FLAGS = -O2 -g -report -fxscope
+COMMON_DEMO_SOURCES = $(MINIMAL_DEMO_ROOT)/AbortDelay.c \
+                      $(MINIMAL_DEMO_ROOT)/BlockQ.c \
+                      $(MINIMAL_DEMO_ROOT)/blocktim.c \
+                      $(MINIMAL_DEMO_ROOT)/countsem.c \
+                      $(MINIMAL_DEMO_ROOT)/death.c \
+                      $(MINIMAL_DEMO_ROOT)/dynamic.c \
+                      $(MINIMAL_DEMO_ROOT)/EventGroupsDemo.c \
+                      $(MINIMAL_DEMO_ROOT)/flop.c \
+                      $(MINIMAL_DEMO_ROOT)/GenQTest.c \
+                      $(MINIMAL_DEMO_ROOT)/integer.c \
+                      $(MINIMAL_DEMO_ROOT)/IntQueue.c \
+                      $(MINIMAL_DEMO_ROOT)/IntSemTest.c \
+                      $(MINIMAL_DEMO_ROOT)/MessageBufferDemo.c \
+                      $(MINIMAL_DEMO_ROOT)/PollQ.c \
+                      $(MINIMAL_DEMO_ROOT)/QPeek.c \
+                      $(MINIMAL_DEMO_ROOT)/QueueOverwrite.c \
+                      $(MINIMAL_DEMO_ROOT)/QueueSet.c \
+                      $(MINIMAL_DEMO_ROOT)/QueueSetPolling.c \
+                      $(MINIMAL_DEMO_ROOT)/recmutex.c \
+                      $(MINIMAL_DEMO_ROOT)/semtest.c \
+                      $(MINIMAL_DEMO_ROOT)/StreamBufferDemo.c \
+                      $(MINIMAL_DEMO_ROOT)/StreamBufferInterrupt.c \
+                      $(MINIMAL_DEMO_ROOT)/TaskNotify.c \
+                      $(MINIMAL_DEMO_ROOT)/TaskNotifyArray.c \
+                      $(MINIMAL_DEMO_ROOT)/TimerDemo.c
 
-USED_MODULES = lib_rtos_support
+RTOS_SUPPORT_SOURCES = $(RTOS_SUPPORT_ROOT)/rtos_cores.c \
+                       $(RTOS_SUPPORT_ROOT)/rtos_interrupt.c \
+                       $(RTOS_SUPPORT_ROOT)/rtos_irq.c \
+                       $(RTOS_SUPPORT_ROOT)/rtos_locks.c \
+                       $(RTOS_SUPPORT_ROOT)/rtos_printf.c \
+                       $(RTOS_SUPPORT_ROOT)/rtos_time.c
 
-VERBOSE = 1
+KERNEL_SOURCES = $(KERNEL_ROOT)/event_groups.c \
+                 $(KERNEL_ROOT)/list.c \
+                 $(KERNEL_ROOT)/queue.c \
+                 $(KERNEL_ROOT)/stream_buffer.c \
+                 $(KERNEL_ROOT)/tasks.c \
+                 $(KERNEL_ROOT)/timers.c \
+                 $(MEMMANG_ROOT)/heap_4.c \
+                 $(XCC_PORT_ROOT)/port.c \
+                 $(XCC_PORT_ROOT)/port.xc \
+                 $(XCC_PORT_ROOT)/portasm.S
 
-XMOS_MAKE_PATH ?= ../..
--include $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common
+SOURCES = $(APP_SOURCES) $(COMMON_DEMO_SOURCES) $(RTOS_SUPPORT_SOURCES) $(KERNEL_SOURCES)
+
+OBJS = $(addprefix $(BUILD_DIR)/,$(notdir $(addsuffix .o,$(SOURCES))))
+
+ROOT_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/partest \
+            $(DEMO_ROOT)/regtest $(DEMO_ROOT)/TimerDemoISR \
+            $(MINIMAL_DEMO_ROOT) $(KERNEL_ROOT) $(MEMMANG_ROOT) \
+            $(XCC_PORT_ROOT) $(RTOS_SUPPORT_ROOT)/src
+
+vpath %.c $(ROOT_DIRS)
+vpath %.xc $(ROOT_DIRS)
+vpath %.S $(ROOT_DIRS)
+
+FLAGS = -Wall -O2 -g -report -fxscope \
+        $(DEMO_ROOT)/$(TARGET).xn \
+        $(DEMO_ROOT)/config.xscope \
+        $(addprefix -I,$(INCLUDE_DIRS))
+
+.PHONY: all clean run
+
+all: $(OUT_DIR)/$(APP_NAME).xe
+
+# Include the header file dependencies for all the sources
+-include $(patsubst %.o,%.d,$(OBJS))
+
+$(BUILD_DIR)/%.o: %
+	@"mkdir" -p $(@D)
+	xcc -c -MT"$@" -MMD -MP -MF"$(patsubst %.o,%.d,$@)" -MT"$(patsubst %.o,%.d,$@)" -o $@ $< $(FLAGS)
+
+$(OUT_DIR)/$(APP_NAME).xe: $(OBJS)
+	@"mkdir" -p $(@D)
+	xcc -o $@ $^ $(FLAGS)
+	
+clean:
+	$(RM) -r $(OUT_DIR) $(BUILD_DIR)
+
+run: $(OUT_DIR)/$(APP_NAME).xe
+	xrun --xscope $(OUT_DIR)/$(APP_NAME).xe
 
