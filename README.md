@@ -1,4 +1,4 @@
-This is a lab repo that represents a work in progress to support the SMP activities in the SMP branch of the FreeRTOS Kernel Repo.  Please do not expect everything to work in this repo.
+This is a lab repo that represents a work in progress to support the symmetric multiprocessing (SMP) activities in the SMP branch of the FreeRTOS Kernel Repo.  Please do not expect everything to work in this repo.
 
 ## Getting started
 The [FreeRTOS.org](https://www.freertos.org) website contains contains a [FreeRTOS Kernel Quick Start Guide](https://www.freertos.org/FreeRTOS-quick-start-guide.html), a [list of supported devices and compilers](https://www.freertos.org/RTOS_ports.html), the [API reference](https://www.freertos.org/a00106.html), and many other resources.
