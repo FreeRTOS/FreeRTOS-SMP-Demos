@@ -73,6 +73,33 @@ static uint32_t prvCheckTasks( int tile, uint32_t ulErrorFound );
 
 static void prvSetupHardware( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan );
 
+void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
+                                    StackType_t **ppxIdleTaskStackBuffer,
+                                    uint32_t *pulIdleTaskStackSize )
+{
+	static StaticTask_t xIdleTaskTCB;
+	static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
+
+    *ppxIdleTaskTCBBuffer = &xIdleTaskTCB;
+
+    *ppxIdleTaskStackBuffer = uxIdleTaskStack;
+
+    *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+}
+
+void vApplicationGetTimerTaskMemory(StaticTask_t **ppxTimerTaskTCBBuffer,
+                                    		StackType_t **ppxTimerTaskStackBuffer,
+                                    		uint32_t *pulTimerTaskStackSize )
+{
+	static StaticTask_t xTimerTaskTCB;
+	static StackType_t uxTimerTaskStack[ configMINIMAL_STACK_SIZE ];
+
+    *ppxTimerTaskTCBBuffer = &xTimerTaskTCB;
+
+    *ppxTimerTaskStackBuffer = uxTimerTaskStack;
+
+    *pulTimerTaskStackSize = configMINIMAL_STACK_SIZE;
+}
 
 int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTile2Chan, chanend_t xTile3Chan )
 {
