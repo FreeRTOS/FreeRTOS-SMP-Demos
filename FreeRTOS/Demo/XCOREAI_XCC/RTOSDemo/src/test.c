@@ -52,6 +52,9 @@ static int tile_g;
 /* Idle hook counter */
 static unsigned long ulCnt = 0;
 
+/* test task counter */
+static unsigned long ulTaskCounter = 0;
+
 /*
  * The 'Check' task function.  Which verifies that no errors are present.
  */
@@ -199,7 +202,7 @@ int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTil
 
 	/* Start the locally defined tasks.  There is also a task implemented as
 	the idle hook. */
-	xTaskCreate( vErrorChecks, "Check", portTASK_STACK_DEPTH( vErrorChecks ), &tile, mainCHECK_TASK_PRIORITY, NULL );
+	// xTaskCreate( vErrorChecks, "Check", portTASK_STACK_DEPTH( vErrorChecks ), &tile, mainCHECK_TASK_PRIORITY, NULL );
 
 	/* Must be the last demo created. */
 	#if( testingmainENABLE_DEATH_TASKS == 1 )
@@ -560,7 +563,14 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 	portRESTORE_INTERRUPTS( ulState );
 	for( ;; );
 }
+/*-----------------------------------------------------------*/
 
+void vApplicationMinimalIdleHook( void )
+{
+	TaskStatus_t status;
+	vTaskGetInfo(NULL, &status, pdTRUE, eInvalid);
+	rtos_printf("%s on Core %u\n", status.pcTaskName,  portGET_CORE_ID());
+}
 /*-----------------------------------------------------------*/
 
 void vApplicationIdleHook( void )
