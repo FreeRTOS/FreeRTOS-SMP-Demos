@@ -12,11 +12,11 @@ COMMON_DEMO_ROOT = ../../Common
 MINIMAL_DEMO_ROOT = $(COMMON_DEMO_ROOT)/Minimal
 PORTABLE_ROOT = $(KERNEL_ROOT)/portable
 MEMMANG_ROOT = $(PORTABLE_ROOT)/MemMang
-XCC_PORT_ROOT = $(PORTABLE_ROOT)/ThirdParty/XCC/XCORE200
+XCORE_PORT_ROOT = $(PORTABLE_ROOT)/ThirdParty/xClang/XCORE200
 RTOS_SUPPORT_ROOT = ../lib_rtos_support
 
 INCLUDE_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/regtest \
-               $(KERNEL_ROOT)/include $(XCC_PORT_ROOT) \
+               $(KERNEL_ROOT)/include $(XCORE_PORT_ROOT) \
                $(COMMON_DEMO_ROOT)/include \
                $(RTOS_SUPPORT_ROOT)/api $(RTOS_SUPPORT_ROOT)/src
 
@@ -69,9 +69,9 @@ KERNEL_SOURCES = $(KERNEL_ROOT)/event_groups.c \
                  $(KERNEL_ROOT)/tasks.c \
                  $(KERNEL_ROOT)/timers.c \
                  $(MEMMANG_ROOT)/heap_4.c \
-                 $(XCC_PORT_ROOT)/port.c \
-                 $(XCC_PORT_ROOT)/port.xc \
-                 $(XCC_PORT_ROOT)/portasm.S
+                 $(XCORE_PORT_ROOT)/port.c \
+                 $(XCORE_PORT_ROOT)/port.xc \
+                 $(XCORE_PORT_ROOT)/portasm.S
 
 SOURCES = $(APP_SOURCES) $(COMMON_DEMO_SOURCES) $(RTOS_SUPPORT_SOURCES) $(KERNEL_SOURCES)
 
@@ -80,7 +80,7 @@ OBJS = $(addprefix $(BUILD_DIR)/,$(notdir $(addsuffix .o,$(SOURCES))))
 ROOT_DIRS = $(DEMO_ROOT) $(DEMO_ROOT)/IntQueueTimer $(DEMO_ROOT)/partest \
             $(DEMO_ROOT)/regtest $(DEMO_ROOT)/TimerDemoISR \
             $(MINIMAL_DEMO_ROOT) $(KERNEL_ROOT) $(MEMMANG_ROOT) \
-            $(XCC_PORT_ROOT) $(RTOS_SUPPORT_ROOT)/src
+            $(XCORE_PORT_ROOT) $(RTOS_SUPPORT_ROOT)/src
 
 vpath %.c $(ROOT_DIRS)
 vpath %.xc $(ROOT_DIRS)
@@ -100,11 +100,11 @@ all: $(OUT_DIR)/$(APP_NAME).xe
 
 $(BUILD_DIR)/%.o: %
 	@"mkdir" -p $(@D)
-	xcc -c -MT"$@" -MMD -MP -MF"$(patsubst %.o,%.d,$@)" -MT"$(patsubst %.o,%.d,$@)" -o $@ $< $(FLAGS)
+	XCC_COMPILER=xclang xcc -c -MT"$@" -MMD -MP -MF"$(patsubst %.o,%.d,$@)" -MT"$(patsubst %.o,%.d,$@)" -o $@ $< $(FLAGS)
 
 $(OUT_DIR)/$(APP_NAME).xe: $(OBJS)
 	@"mkdir" -p $(@D)
-	xcc -o $@ $^ $(FLAGS)
+	XCC_COMPILER=xclang xcc -o $@ $^ $(FLAGS)
 	
 clean:
 	$(RM) -r $(OUT_DIR) $(BUILD_DIR)
