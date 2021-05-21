@@ -1,7 +1,6 @@
 Prerequisites:
 
-  - XMOS xTIMEcomposer 15.0.6 is required to build the demo. Earlier and later
-    versions may work but have not been tested.
+  - XMOS XTC Tools 15.0.6 or later is required to build the demo.
 
   - GNU Make. A makefile is included to build this application, which requires
     that make be on the path. On Windows this may require building in a bash
