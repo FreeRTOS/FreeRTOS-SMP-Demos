@@ -91,6 +91,8 @@ FLAGS = -Wall -O2 -g -report -fxscope \
         $(DEMO_ROOT)/config.xscope \
         $(addprefix -I,$(INCLUDE_DIRS))
 
+XCLANG = xcc
+
 .PHONY: all clean run
 
 all: $(OUT_DIR)/$(APP_NAME).xe
@@ -100,11 +102,11 @@ all: $(OUT_DIR)/$(APP_NAME).xe
 
 $(BUILD_DIR)/%.o: %
 	@"mkdir" -p $(@D)
-	XCC_COMPILER=xclang xcc -c -MT"$@" -MMD -MP -MF"$(patsubst %.o,%.d,$@)" -MT"$(patsubst %.o,%.d,$@)" -o $@ $< $(FLAGS)
+	$(XCLANG) -c -MT"$@" -MMD -MP -MF"$(patsubst %.o,%.d,$@)" -MT"$(patsubst %.o,%.d,$@)" -o $@ $< $(FLAGS)
 
 $(OUT_DIR)/$(APP_NAME).xe: $(OBJS)
 	@"mkdir" -p $(@D)
-	XCC_COMPILER=xclang xcc -o $@ $^ $(FLAGS)
+	$(XCLANG) -o $@ $^ $(FLAGS)
 	
 clean:
 	$(RM) -r $(OUT_DIR) $(BUILD_DIR)
