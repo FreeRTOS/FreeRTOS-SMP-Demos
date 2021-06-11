@@ -1,5 +1,5 @@
-// Copyright 2020 XMOS LIMITED. This Software is subject to the terms of the 
-// XMOS Public License: Version 1
+// Copyright 2019-2021 XMOS LIMITED.
+// This Software is subject to the terms of the XMOS Public Licence: Version 1.
 
 /*
  * This file extends the interrupt support in lib_xcore_c to support
@@ -24,7 +24,13 @@
     .issue_mode single; \
     .cc_top _XCORE_INTERRUPT_PERMITTED(root_function).function,_XCORE_INTERRUPT_PERMITTED(root_function); \
     _XCORE_INTERRUPT_PERMITTED(root_function):; \
-      _XCORE_ENTSP(_XCORE_STACK_ALIGN(3)); \
+      _XCORE_ENTSP(_XCORE_STACK_ALIGN(5)); \
+      /* Save CP into SP[4] */ \
+      ldaw r11, cp[0]; \
+      stw r11, sp[4];  \
+      /* Save DP into SP[3] */ \
+      ldaw r11, dp[0]; \
+      stw r11, sp[3];  \
       stw r5, sp[2]; \
       stw r4, sp[1]; \
       ldc r4, _kstack_words; \
@@ -34,10 +40,10 @@
       bau r11; \
     .cc_bottom _XCORE_INTERRUPT_PERMITTED(root_function).function; \
     /* The stack size for this function must be big enough for: */ \
-    /*  - This wrapper function: _XCORE_STACK_ALIGN(3) + __xcore_interrupt_permitted_common.nstackwords  */ \
+    /*  - This wrapper function: _XCORE_STACK_ALIGN(5) + __xcore_interrupt_permitted_common.nstackwords  */ \
     /*  - The size of the stack required by the root function: root_function.nstackwords */ \
     /*  - The size of the stack required by the ISR group: _kstack_words */ \
-    .set   _XCORE_INTERRUPT_PERMITTED(root_function).nstackwords, _XCORE_STACK_ALIGN(3) + __xcore_interrupt_permitted_common.nstackwords + root_function.nstackwords + _kstack_words; \
+    .set   _XCORE_INTERRUPT_PERMITTED(root_function).nstackwords, _XCORE_STACK_ALIGN(5) + __xcore_interrupt_permitted_common.nstackwords + root_function.nstackwords + _kstack_words; \
     .globl _XCORE_INTERRUPT_PERMITTED(root_function).nstackwords; \
     .set   _XCORE_INTERRUPT_PERMITTED(root_function).maxcores, 1 $M __xcore_interrupt_permitted_common.maxcores $M root_function.maxcores; \
     .globl _XCORE_INTERRUPT_PERMITTED(root_function).maxcores; \
