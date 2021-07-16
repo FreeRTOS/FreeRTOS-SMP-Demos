@@ -55,12 +55,12 @@ COMMON_DEMO_SOURCES = $(MINIMAL_DEMO_ROOT)/AbortDelay.c \
                       $(MINIMAL_DEMO_ROOT)/TaskNotifyArray.c \
                       $(MINIMAL_DEMO_ROOT)/TimerDemo.c
 
-RTOS_SUPPORT_SOURCES = $(RTOS_SUPPORT_ROOT)/rtos_cores.c \
-                       $(RTOS_SUPPORT_ROOT)/rtos_interrupt.c \
-                       $(RTOS_SUPPORT_ROOT)/rtos_irq.c \
-                       $(RTOS_SUPPORT_ROOT)/rtos_locks.c \
-                       $(RTOS_SUPPORT_ROOT)/rtos_printf.c \
-                       $(RTOS_SUPPORT_ROOT)/rtos_time.c
+RTOS_SUPPORT_SOURCES = $(RTOS_SUPPORT_ROOT)/src/rtos_cores.c \
+                       $(RTOS_SUPPORT_ROOT)/src/rtos_interrupt.c \
+                       $(RTOS_SUPPORT_ROOT)/src/rtos_irq.c \
+                       $(RTOS_SUPPORT_ROOT)/src/rtos_locks.c \
+                       $(RTOS_SUPPORT_ROOT)/src/rtos_printf.c \
+                       $(RTOS_SUPPORT_ROOT)/src/rtos_time.c
 
 KERNEL_SOURCES = $(KERNEL_ROOT)/event_groups.c \
                  $(KERNEL_ROOT)/list.c \

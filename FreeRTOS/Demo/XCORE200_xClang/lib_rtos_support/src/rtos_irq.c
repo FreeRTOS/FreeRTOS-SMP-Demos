@@ -1,5 +1,5 @@
-// Copyright 2021 XMOS LIMITED. This Software is subject to the terms of the 
-// XMOS Public License: Version 1
+// Copyright 2019-2021 XMOS LIMITED.
+// This Software is subject to the terms of the XMOS Public Licence: Version 1.
 
 #include <xcore/triggerable.h>
 #include "rtos_support.h"
@@ -155,6 +155,7 @@ void rtos_irq( int core_id, int source_id )
     }
     rtos_lock_release(0);
 }
+
 
 /*
  * Must be called by an RTOS core to interrupt a
