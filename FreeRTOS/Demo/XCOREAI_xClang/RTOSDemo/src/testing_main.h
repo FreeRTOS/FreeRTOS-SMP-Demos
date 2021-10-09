@@ -3,6 +3,7 @@
 #ifndef TESTING_MAIN_H_
 #define TESTING_MAIN_H_
 
+#define testingmainBLINKY_DEMO			0
 #define testingmainNUM_TILES			2
 #define testingmainENABLE_XC_TASKS		1
 
