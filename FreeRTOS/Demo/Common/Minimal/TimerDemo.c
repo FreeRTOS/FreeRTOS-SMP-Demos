@@ -54,6 +54,13 @@
 	#define tmrTIMER_TEST_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
 #endif
 
+#ifndef portTIMER_CALLBACK_FUNCTION_PROTO
+	#define portTIMER_CALLBACK_FUNCTION_PROTO( vFunction, xTimer ) void vFunction( TimerHandle_t xTimer )
+#endif
+
+#ifndef portTIMER_CALLBACK_FUNCTION
+	#define portTIMER_CALLBACK_FUNCTION( vFunction, xTimer ) void vFunction( TimerHandle_t xTimer )
+#endif
 /*-----------------------------------------------------------*/
 
 /* The callback functions used by the timers.  These each increment a counter

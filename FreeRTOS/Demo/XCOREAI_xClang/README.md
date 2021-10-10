@@ -36,10 +36,22 @@ When `testingmainBLINKY_DEMO` is set to 1, the demo application creates
 two tasks which toggle 2 on-board LEDs (LED 0 and LED 1) periodically.
 
 ### When testingmainBLINKY_DEMO is set to 0
-When `testingmainBLINKY_DEMO` is set to 0, the demo application creates standard
-demo tasks. Standard demo tasks are used by all FreeRTOS port demo applications.
-They have no specific functionality, and are created just to demonstrate how to
-use the FreeRTOS API, and test the RTOS port.
+When `testingmainBLINKY_DEMO` is set to 0, the demo application implements a
+comprehensive test and demo that demonstrates and/or tests (among other things):
+
+* [Message buffers](https://www.freertos.org/RTOS-stream-message-buffers.html)
+* [Stream buffers](https://www.freertos.org/RTOS-stream-message-buffers.html)
+* [Task notifications](https://www.freertos.org/RTOS-task-notifications.html)
+* [Queues](https://www.freertos.org/Embedded-RTOS-Queues.html)
+* [Semaphores](https://www.freertos.org/Embedded-RTOS-Binary-Semaphores.html)
+* [Mutexes](https://www.freertos.org/Real-time-embedded-RTOS-mutexes.html)
+* [Event groups](https://www.freertos.org/FreeRTOS-Event-Groups.html)
+* [Software timers](https://www.freertos.org/RTOS-software-timer.html)
+
+The created tasks are from the set of [standard demo](https://www.freertos.org/a00102.html)
+tasks. Standard demo tasks are used by all FreeRTOS port demo applications. They
+have no specific functionality, and are created just to demonstrate how to use
+the FreeRTOS API, and test the RTOS port.
 
 Two "check" tasks are created that periodically inspect the standard demo tasks
 (which contain self monitoring code) to ensure all the tasks are functioning as
