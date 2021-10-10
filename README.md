@@ -2,7 +2,7 @@ This repository contains demo applications for the [Symmetric Multiprocessing (S
 support in the FreeRTOS Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp).
 See the following links for details of demo applications:
 * [XCORE AI](FreeRTOS/Demo/XCOREAI_xClang/README.md)
-* [RRaspberry Pi Pico](FreeRTOS/Demo/CORTEX_M0+_RP2040/README.md)
+* [Raspberry Pi Pico](FreeRTOS/Demo/CORTEX_M0+_RP2040/README.md)
 
 ## Getting started
 The [FreeRTOS.org](https://www.freertos.org) website contains contains a
