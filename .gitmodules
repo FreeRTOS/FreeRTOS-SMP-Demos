@@ -3,11 +3,3 @@
 	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
 	branch = smp
 	update = merge
-[submodule "FreeRTOS/Test/CMock/CMock"]
-	path = FreeRTOS/Test/CMock/CMock
-	url = https://github.com/ThrowTheSwitch/CMock.git
-[submodule "FreeRTOS/Test/aws-build-accumulator"]
-	path = FreeRTOS/Test/litani
-	url = https://github.com/awslabs/aws-build-accumulator.git
-	branch = mainline
-	update = rebase
