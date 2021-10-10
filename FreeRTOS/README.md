@@ -3,12 +3,12 @@
 + The **FreeRTOS/Source** directory contains the FreeRTOS source code, and contains
   its own readme file.
 
-+ The **FreeRTOS/Demo** directory contains a demo application for every official
-FreeRTOS port, and contains its own readme file.
++ The **FreeRTOS/Demo** directory contains a demo applications for Symmetric
+  Multiprocessing (SMP) support in FreeRTOS Kernel.
 
-+ The **FreeRTOS/Test** directory contains the tests performed on common code and the portable layer code, and contains its own readme file.
-
-See [FreeRTOS/SourceOrganization](http://www.freertos.org/a00017.html) for full details of the directory structure and information on locating the files you require.
+See [FreeRTOS/SourceOrganization](http://www.freertos.org/a00017.html) for full
+details of the directory structure and information on locating the files you
+require.
 
 The easiest way to use FreeRTOS is to start with one of the pre-configured demo 
 application projects (found in the FreeRTOS/Demo directory).  That way you will
