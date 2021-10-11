@@ -33,7 +33,7 @@ started project and a more comprehensive test and demo application.
 
 ### When testingmainBLINKY_DEMO is set to 1
 When `testingmainBLINKY_DEMO` is set to 1, the demo application creates
-two tasks which toggle 2 on-board LEDs (LED 0 and LED 1) periodically.
+two tasks which periodically toggle two on-board LEDs (LED 0 and LED 1).
 
 ### When testingmainBLINKY_DEMO is set to 0
 When `testingmainBLINKY_DEMO` is set to 0, the demo application implements a
@@ -50,14 +50,14 @@ comprehensive test and demo that demonstrates and/or tests (among other things):
 
 The created tasks are from the set of [standard demo](https://www.freertos.org/a00102.html)
 tasks. Standard demo tasks are used by all FreeRTOS port demo applications. They
-have no specific functionality, and are created just to demonstrate how to use
+have no specific functionality, and were created simply to demonstrate how to use
 the FreeRTOS API, and test the RTOS port.
 
-Two "check" tasks are created that periodically inspect the standard demo tasks
+Two "check" tasks are created to periodically inspect the standard demo tasks
 (which contain self monitoring code) to ensure all the tasks are functioning as
 expected. One check task monitors the demo tasks running on tile 0 and toggles
-the LED 0 each time it executes. The other check task monitors the demo tasks
-running on tile 1 and toggles the LED 1 each time it executes. This gives visual
+LED 0 each time it executes. The other check task monitors the demo tasks
+running on tile 1 and toggles LED 1 each time it executes. This gives visual
 feedback of the system health. **If both the LEDs toggle every 3 seconds, then the
 check tasks have not discovered any problems. If any LED toggles every 200ms,
 then the check task has discovered a problem in one or more tasks.**
@@ -71,7 +71,7 @@ Plug the xTAG programmer into the evaluation board. Ensure both the xTAG and
 evaluation board are connected to the computer via USB.
 
 ### Toolchain installation
-1. Download the XMOS XTC Tools from [here](https://www.xmos.ai/software-tools/).
+1. Download the [XMOS XTC Tools](https://www.xmos.ai/software-tools/).
 2. Uncompress the archive to your chosen installation directory. The example
 below will install to your home directory:
 ```sh
@@ -87,12 +87,12 @@ $ source SetEnv
 $ xcc --help
 ```
 5. Make the XTAG drivers accessible to all users. This step is only required
-once on a given development machine.
+to be done once on a given development machine.
 ```sh
 $ cd ~/XMOS/XTC/15.1.0/scripts
 $ sudo ./setup_xmos_devices.sh
 ```
-6. check that the XTAG devices are available and accessible:
+6. Check that the XTAG devices are available and accessible:
 ```sh
 $ cd ~/XMOS/XTC/15.1.0/scripts
 $ ./check_xmos_devices.sh
@@ -134,12 +134,12 @@ $ make run
 `FreeRTOS/Demo/XCOREAI_xClang/RTOSDemo/src/FreeRTOSConfig.h`. The
 [constants defined in that file](https://www.freertos.org/a00110.html) can be
 edited to suit your application. The following configuration options are
-specific to the SMP support in FreeRTOS Kernel:
-  * `configNUM_CORES` - Set number of cores.
-  * `configRUN_MULTIPLE_PRIORITIES` - Enable/Disable running multiple priorities tasks simultaneously.
-  * `configUSE_CORE_AFFINITY` - Enable/Disable setting tasks affinity to cores.
+specific to the SMP support in the FreeRTOS Kernel:
+  * `configNUM_CORES` - Set the number of cores.
+  * `configRUN_MULTIPLE_PRIORITIES` - Enable/Disable simultaneously running tasks with multiple priorities.
+  * `configUSE_CORE_AFFINITY` - Enable/Disable setting a task's affinity to certain cores.
 * `Source/Portable/MemMang/heap_4.c` is included in the project to provide the
 memory allocation required by the RTOS kernel. Please refer to the
 [Memory Management](https://www.freertos.org/a00111.html) section of the API
-documentation for full information.
+documentation for complete information.
 * vPortEndScheduler() has not been implemented.
