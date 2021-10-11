@@ -188,6 +188,31 @@ void vTaskCode( void *pvParameters )
 }
 ```
 
+# New Hook Functions
+
+## Minimal Idle Hook Function
+The FreeRTOS-SMP kernel has two type of Idle tasks:
+1. Idle Task - There is one usual Idle task which does all the garbage collection.
+2. Minimal Idle Tasks - There are `configNUM_CORES - 1` Minimal Idle tasks which
+   are run on idle cores and do nothing.
+
+The minimal idle tasks can optionally call an application defined hook
+(or callback) function - the minimal idle hook. The minimal idle tasks run at
+the very lowest priority, so such an idle hook function will only get executed
+when there are no tasks of higher priority that are able to run.
+
+The minimal idle hook will only get called if `configUSE_MINIMAL_IDLE_HOOK` is
+set to `1` within `FreeRTOSConfig.h`. When this is set the application must
+provide the hook function with the following prototype:
+
+```c
+void vApplicationMinimalIdleHook( void );
+```
+
+The minimal idle hook is called repeatedly by call the minimal idle tasks as
+long as any of them is running. **It is paramount that the minimal idle hook
+unction does not call any API functions that could cause it to block.**
+
 # New Configuration Options
 
 The following new configuration options have been added to the FreeRTOS-SMP
