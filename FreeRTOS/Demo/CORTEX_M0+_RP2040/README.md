@@ -1,9 +1,11 @@
-# Demos for Raspberry Pi Pico Board
+# FreeRTOS SMP Demos for Raspberry Pi Pico Board
 
-This page documents FreeRTOS demo applications that target the
-[Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)
-board. The Raspberry Pi Pico board uses the [RP2040](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html#welcome-to-rp2040)
-microcontroller from [Raspberry Pi](https://www.raspberrypi.com/) which features a
+> **FreeRTOS-SMP Kernel is still being tested.**
+
+This page documents demos that use the [FreeRTOS symmetric multiprocessing (SMP) version](../../../SMP.md).
+The demos target the [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)
+board, which uses the [RP2040](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html#welcome-to-rp2040)
+microcontroller from [Raspberry Pi](https://www.raspberrypi.com/) featuring a
 Dual-core ARM Cortex M0+ processor.
 
 These demo applications use the [GNU ARM Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
@@ -27,7 +29,8 @@ Also see the FAQ [My application does not run, what could be wrong](https://www.
 
 ## Source Code Organization
 The project files for this demo are located in the `FreeRTOS/Demo/CORTEX_M0+_RP2040`
-directory. FreeRTOS Port files compiled in the project are in the
+directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP).
+FreeRTOS Port files compiled in the project are in the
 `FreeRTOS/Source/portable/ThirdParty/GCC/RP2040` directory.
 
 ----

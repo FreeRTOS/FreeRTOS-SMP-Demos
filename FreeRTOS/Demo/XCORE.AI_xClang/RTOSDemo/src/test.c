@@ -52,14 +52,14 @@ static int tile_g;
 /* Idle hook counter */
 static unsigned long ulCnt = 0;
 
-#if( testingmainBLINKY_DEMO == 0 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	/*
 	* The 'Check' task function.  Which verifies that no errors are present.
 	*/
 	static void vErrorChecks( void *pvParameters );
 #endif
 
-#if( testingmainBLINKY_DEMO == 1 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1 )
 	/*
 	* The task that implements the Blinky demo.
 	*/
@@ -72,7 +72,7 @@ static unsigned long ulCnt = 0;
  */
 void vApplicationIdleHook( void );
 
-#if( testingmainBLINKY_DEMO == 0 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	/*
 	* Checks the unique counts of other tasks to ensure they are still operational.
 	*/
@@ -124,7 +124,7 @@ int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTil
 
 	tile_g = tile;
 
-	#if( testingmainBLINKY_DEMO == 1 )
+	#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1 )
 	{
 		switch( tile )
 		{
@@ -270,7 +270,7 @@ int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTil
 			vCreateSuicidalTasks( mainDEATH_PRIORITY );
 		#endif
 	}
-	#endif /* #if( testingmainBLINKY_DEMO == 1 ) */
+	#endif /* #if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1 ) */
 
 	/* All the tasks have been created - start the scheduler. */
 	rtos_printf( "Starting Scheduler\n" );
@@ -282,7 +282,7 @@ int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTil
 
 /*-----------------------------------------------------------*/
 
-#if( testingmainBLINKY_DEMO == 1 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1 )
 	static void vBlinkyDemo( void *pvParameters )
 	{
 	int tile = ( ( int * ) pvParameters )[0];
@@ -300,7 +300,7 @@ int c_main( int tile, chanend_t xTile0Chan, chanend_t xTile1Chan, chanend_t xTil
 
 /*-----------------------------------------------------------*/
 
-#if( testingmainBLINKY_DEMO == 0 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	static void vErrorChecks( void *pvParameters )
 	{
 	TickType_t xDelayPeriod = mainCHECK_PERIOD;
@@ -357,7 +357,7 @@ static void prvSetupHardware( int tile, chanend_t xTile0Chan, chanend_t xTile1Ch
 
 /*-----------------------------------------------------------*/
 
-#if( testingmainBLINKY_DEMO == 0 )
+#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	static uint32_t prvCheckTasks( int tile, uint32_t ulErrorFound )
 	{
 		switch( tile )
@@ -688,7 +688,7 @@ uint32_t ulState;
 
 void vApplicationTickHook( void )
 {
-	#if( testingmainBLINKY_DEMO == 0 )
+	#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	{
 		switch (tile_g)
 		{
@@ -753,7 +753,7 @@ void vApplicationTickHook( void )
 			break;
 		}
 	}
-	#endif /* #if( testingmainBLINKY_DEMO == 0 ) */
+	#endif /* #if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 ) */
 }
 
 /*-----------------------------------------------------------*/

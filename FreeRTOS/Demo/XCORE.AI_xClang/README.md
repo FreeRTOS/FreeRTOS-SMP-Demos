@@ -1,8 +1,13 @@
 # FreeRTOS SMP Demo for XMOS XCORE.AI Explorer Board
-This page documents a demo that uses the [FreeRTOS symmetric multiprocessing (SMP) version](TBD).  The demo targets the [XCORE.AI](https://www.xmos.ai/xcore-ai/), which has 16 cores.
-The project uses [XMOS XTC Tools](https://www.xmos.ai/software-tools/) to build
-the FreeRTOS XCOREAI port. This application demonstrates the [Symmetric
-Multiprocessing (SMP)](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp) support in the FreeRTOS Kernel.
+
+> **FreeRTOS-SMP Kernel is still being tested.**
+
+This page documents a demo that uses the [FreeRTOS symmetric multiprocessing (SMP) version](../../../SMP.md).
+The demo targets the [XCORE.AI](https://www.xmos.ai/xcore-ai/), which has 16
+cores. The project uses [XMOS XTC Tools](https://www.xmos.ai/software-tools/) to
+build the FreeRTOS XCOREAI port. This application demonstrates the [Symmetric
+Multiprocessing (SMP)](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp)
+support in the FreeRTOS Kernel.
 
 ----
 
@@ -20,24 +25,27 @@ Also see the FAQ [My application does not run, what could be wrong](https://www.
 ----
 
 ## Source Code Organization
-The project files for this demo are located in the `FreeRTOS/Demo/XCOREAI_xClang/RTOSDemo`
-directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP). FreeRTOS Port files compiled in the project are in the
+The project files for this demo are located in the `FreeRTOS/Demo/XCORE.AI_xClang/RTOSDemo`
+directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP).
+FreeRTOS Port files compiled in the project are in the
 `FreeRTOS/Source/portable/ThirdParty/xClang/XCOREAI` directory.
 
 ----
 
 ## The Demo Application
-The constant `testingmainBLINKY_DEMO`, which is defined at the top of
-`testing_main.h`, is used to switch between a simple "blinky" style getting
+The constant `mainCREATE_SIMPLE_BLINKY_DEMO_ONLY`, which is defined at the top
+of `testing_main.h`, is used to switch between a simple "blinky" style getting
 started project and a more comprehensive test and demo application.
 
-### When testingmainBLINKY_DEMO is set to 1
-When `testingmainBLINKY_DEMO` is set to 1, the demo application creates
-two tasks, each of which periodically toggles an on-board LED (LED 0 by one task and and LED 1 by the other).
+### When mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is set to 1
+When `mainCREATE_SIMPLE_BLINKY_DEMO_ONLY` is set to 1, the demo application
+creates two tasks, each of which periodically toggles an on-board LED (LED 0 by
+one task and and LED 1 by the other).
 
-### When testingmainBLINKY_DEMO is set to 0
-When `testingmainBLINKY_DEMO` is set to 0, the demo application implements a
-comprehensive test and demo that demonstrates and/or tests (among other things):
+### When mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is set to 0
+When `mainCREATE_SIMPLE_BLINKY_DEMO_ONLY` is set to 0, the demo application
+implements a comprehensive test and demo that, among other things, demonstrates
+and/or tests:
 
 * [Message buffers](https://www.freertos.org/RTOS-stream-message-buffers.html)
 * [Stream buffers](https://www.freertos.org/RTOS-stream-message-buffers.html)
@@ -118,7 +126,7 @@ Available XMOS Devices
 ### Build and Run the demo application
 1. Go to the RTOSDemo directory:
 ```sh
-$ cd FreeRTOS/Demo/XCOREAI_xClang/RTOSDemo
+$ cd FreeRTOS/Demo/XCORE.AI_xClang/RTOSDemo
 ```
 2. Build the demo:
 ```sh
@@ -133,7 +141,7 @@ $ make run
 ## RTOS Configuration and Usage Details
 
 * Configuration items specific to this demo are contained in
-`FreeRTOS/Demo/XCOREAI_xClang/RTOSDemo/src/FreeRTOSConfig.h`. The
+`FreeRTOS/Demo/XCORE.AI_xClang/RTOSDemo/src/FreeRTOSConfig.h`. The
 [constants defined in that file](https://www.freertos.org/a00110.html) can be
 edited to suit your application. The following configuration options are
 specific to the SMP support in the FreeRTOS Kernel:
