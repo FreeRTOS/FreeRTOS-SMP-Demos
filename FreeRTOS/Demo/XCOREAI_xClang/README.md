@@ -1,5 +1,5 @@
-# XCORE.AI Demo for XCORE.AI Explorer Board
-This page documents a FreeRTOS demo application that targets [XCORE.AI](https://www.xmos.ai/xcore-ai/).
+# FreeRTOS SMP Demo for XMOS XCORE.AI Explorer Board
+This page documents a demo that uses the [FreeRTOS symmetric multiprocessing (SMP) version](TBD).  The demo targets the [XCORE.AI](https://www.xmos.ai/xcore-ai/), which has 16 cores.
 The project uses [XMOS XTC Tools](https://www.xmos.ai/software-tools/) to build
 the FreeRTOS XCOREAI port. This application demonstrates the [Symmetric
 Multiprocessing (SMP)](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp) support in the FreeRTOS Kernel.
@@ -21,7 +21,7 @@ Also see the FAQ [My application does not run, what could be wrong](https://www.
 
 ## Source Code Organization
 The project files for this demo are located in the `FreeRTOS/Demo/XCOREAI_xClang/RTOSDemo`
-directory. FreeRTOS Port files compiled in the project are in the
+directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP). FreeRTOS Port files compiled in the project are in the
 `FreeRTOS/Source/portable/ThirdParty/xClang/XCOREAI` directory.
 
 ----
@@ -33,7 +33,7 @@ started project and a more comprehensive test and demo application.
 
 ### When testingmainBLINKY_DEMO is set to 1
 When `testingmainBLINKY_DEMO` is set to 1, the demo application creates
-two tasks which periodically toggle two on-board LEDs (LED 0 and LED 1).
+two tasks, each of which periodically toggles an on-board LED (LED 0 by one task and and LED 1 by the other).
 
 ### When testingmainBLINKY_DEMO is set to 0
 When `testingmainBLINKY_DEMO` is set to 0, the demo application implements a
@@ -71,6 +71,8 @@ Plug the xTAG programmer into the evaluation board. Ensure both the xTAG and
 evaluation board are connected to the computer via USB.
 
 ### Toolchain installation
+The development tools require a Linux host or a Linux style environment.
+
 1. Download the [XMOS XTC Tools](https://www.xmos.ai/software-tools/).
 2. Uncompress the archive to your chosen installation directory. The example
 below will install to your home directory:
