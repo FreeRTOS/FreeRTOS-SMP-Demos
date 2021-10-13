@@ -26,7 +26,7 @@ Also see the FAQ [My application does not run, what could be wrong](https://www.
 
 ## Source Code Organization
 The project files for this demo are located in the `FreeRTOS/Demo/XCORE.AI_xClang/RTOSDemo`
-directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/Lab-Project-FreeRTOS-SMP).
+directory of the [FreeRTOS SMP Demo Git repository](https://github.com/FreeRTOS/FreeRTOS-SMP-Demos).
 FreeRTOS Port files compiled in the project are in the
 `FreeRTOS/Source/portable/ThirdParty/xClang/XCOREAI` directory.
 
