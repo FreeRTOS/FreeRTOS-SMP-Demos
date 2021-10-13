@@ -1,12 +1,11 @@
-# Introduction
+# Introduction to Symmetric Multiprocessing (SMP) with FreeRTOS
 
-[Symmetric Multiprocessing (SMP) support in FreeRTOS Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp)
-enables you to run multiple tasks simultaneously on multi-core microcontrollers.
-Mutlti-core microcontrollers contain two or more identical processor cores which
-share the same memory. The FreeRTOS-SMP kernel utilizes all of those cores to
-schedule multiple ready tasks simultaneously.
+[SMP support in FreeRTOS Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp)
+enables one instance of the FreeRTOS kernel to schedule tasks across multiple
+identical processor cores.  The core architectures must be identical and share the
+same memory.
 
-# Getting Started
+# Getting Started with FreeRTOS and SMP
 
 The simplest way to get started is to use one of the following pre-configured
 example projects:
@@ -14,7 +13,7 @@ example projects:
 * [XCORE AI](FreeRTOS/Demo/XCORE.AI_xClang/README.md)
 * [Raspberry Pi Pico](FreeRTOS/Demo/CORTEX_M0+_RP2040/README.md)
 
-# New APIs
+# SMP Specific APIs
 
 These additional APIs are available to the FreeRTOS-SMP Kernel:
 * [vTaskCoreAffinitySet](#vtaskcoreaffinityset)
@@ -200,11 +199,11 @@ void vTaskCode( void *pvParameters )
 }
 ```
 
-# New Hook Functions
+# SMP Specific Hook Functions
 
 ## Minimal Idle Hook Function
-The FreeRTOS-SMP kernel has two type of Idle tasks:
-1. Idle Task - There is the one usual Idle task which does all the garbage collection.
+The FreeRTOS SMP kernel has two type of Idle tasks:
+1. Idle Task - There is the standard Idle task used in single core FreeRTOS applications.
 2. Minimal Idle Tasks - There are `configNUM_CORES - 1` Minimal Idle tasks which
    are run on idle cores and which do nothing.
 
@@ -225,7 +224,7 @@ The minimal idle hook is called repeatedly by the minimal idle tasks as
 long as any one of them is running. **It is paramount that the minimal idle hook
 function does not call any API functions that could cause it to block.**
 
-# New Configuration Options
+# SMP Specific Configuration Options
 
 These additional configuration options are available to the FreeRTOS-SMP
 Kernel:
@@ -236,26 +235,42 @@ Kernel:
 
 ## configNUM_CORES
 
-Sets the number of cores.
+Sets the number of available processor cores.
 
 ## configRUN_MULTIPLE_PRIORITIES
 
-Configures whether tasks with multiple priorities can run simultaneously. If
-`configRUN_MULTIPLE_PRIORITIES` is defined as `0`, multiple tasks may run
-simultaneously only if they have equal priority. If
+In a single core FreeRTOS application, a lower priority task will never run if
+there is a higher priority task that is able to run.  In an SMP FreeRTOS application
+the RTOS kernel will run as many tasks as there are cores available - so it is possible
+that a lower priority task will run on one core at the same time as a higher priority task
+runs on another core.  That can cause a problem if you application or library was
+written for a single core environment, so makes assumptions about the order in
+which tasks execute.  Therefore configRUN_MULTIPLE_PRIORITIES is provided to
+control the behaviour.
+
+
+If `configRUN_MULTIPLE_PRIORITIES` is defined as `0`, multiple tasks may run
+simultaneously only if they have equal priority - maintaining the paradigm of
+a lower priority task never running if there is a higher priority task that is
+able to run.  If
 `configRUN_MULTIPLE_PRIORITIES` is defined as `1`, multiple tasks with different
-priorities may run simultaneously.
+priorities may run simultaneously - so a higher and lower priority task may run
+on different cores at the same time.
 
 ## configUSE_CORE_AFFINITY
 
 Allows the application writer to control which cores a task can run on.
 If `configUSE_CORE_AFFINITY` is defined as `1`, `vTaskCoreAffinitySet` can be
 used to control which cores a task can run on, and `vTaskCoreAffinityGet` can be
-used to query which cores a task can run on.
+used to query which cores a task can run on.  If `configUSE_CORE_AFFINITY` is 0
+then the FreeRTOS scheduler is free to execute any task on any available core.
 
 ## configUSE_TASK_PREEMPTION_DISABLE
 
-Allows the application writer to disable preemption on a per task basis. When
-`configUSE_TASK_PREEMPTION_DISABLE` is defined as `1`, `vTaskPreemptionDisable`
-and `vTaskPreemptionEnable` APIs can be used to disable and enable preemption on
-a per task basis.
+In a single core FreeRTOS application the FreeRTOS scheduler can be configured to
+be either pre-emptive or co-operative.  See the definition of configUSE_PREEMPTION.
+In SMP FreeRTOS application, if `configUSE_TASK_PREEMPTION_DISABLE` is defined as `1`, 
+then individual tasks can be set to either pre-emptive or co-operative mode using the `vTaskPreemptionDisable`
+and `vTaskPreemptionEnable` API functions.
+
+
