@@ -240,7 +240,7 @@ Sets the number of available processor cores.
 ## configRUN_MULTIPLE_PRIORITIES
 
 In a single core FreeRTOS application, a lower priority task will never run if
-there is a higher priority task that is able to run.  In a multicore FreeRTOS application
+there is a higher priority task that is able to run.  In an SMP FreeRTOS application
 the RTOS kernel will run as many tasks as there are cores available - so it is possible
 that a lower priority task will run on one core at the same time as a higher priority task
 runs on another core.  That can cause a problem if you application or library was
