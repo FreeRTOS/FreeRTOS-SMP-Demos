@@ -20,3 +20,11 @@ writer has couple of options to address this:
    ensures that multiple tasks will run simultaneously only if they have the
    same priority. Note that this may result in under utilization and put some
    cores to idle when they could be used to run other low priority tasks.
+
+One other common assumption is that ISRs cannot run simultaneously with each
+other or with other tasks. This is no longer true in a multi-core environment
+and the application writer needs to ensure proper mutual exclusion while
+accessing shared data between tasks and ISRs. The macros `taskENTER_CRITICAL_FROM_ISR()`
+and `taskEXIT_CRITICAL_FROM_ISR()` can be used in ISRs and the macros
+`taskENTER_CRITICAL()` and `taskEXIT_CRITICAL()` can be used in tasks to provide
+such mutual exclusion.

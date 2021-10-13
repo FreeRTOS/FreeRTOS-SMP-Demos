@@ -6,6 +6,14 @@ Mutlti-core microcontrollers contain two or more identical processor cores which
 share the same memory. The FreeRTOS-SMP kernel utilizes all of those cores to
 schedule multiple ready tasks simultaneously.
 
+# Getting Started
+
+The simplest way to get started is to use one of the following pre-configured
+example projects:
+
+* [XCORE AI](FreeRTOS/Demo/XCORE.AI_xClang/README.md)
+* [Raspberry Pi Pico](FreeRTOS/Demo/CORTEX_M0+_RP2040/README.md)
+
 # New APIs
 
 These additional APIs are available to the FreeRTOS-SMP Kernel:
@@ -118,6 +126,8 @@ UBaseType_t uxNetworkingCoreAffinityMask;
 void vTaskPreemptionDisable( const TaskHandle_t xTask );
 ```
 
+`configUSE_TASK_PREEMPTION_DISABLE` must be defined as `1` for this function to be available.
+
 Disables preemption for a task.
 
 **Parameters:**
@@ -155,6 +165,8 @@ void vTaskCode( void *pvParameters )
 ```c
 void vTaskPreemptionEnable( const TaskHandle_t xTask );
 ```
+
+`configUSE_TASK_PREEMPTION_DISABLE` must be defined as `1` for this function to be available.
 
 Enables preemption for a task.
 
@@ -220,6 +232,7 @@ Kernel:
 * [configNUM_CORES](#confignumcores)
 * [configRUN_MULTIPLE_PRIORITIES](#configrunmultiplepriorities)
 * [configUSE_CORE_AFFINITY](#configusecoreaffinity)
+* [configUSE_TASK_PREEMPTION_DISABLE](#configusetaskpreemptiondisable)
 
 ## configNUM_CORES
 
@@ -239,3 +252,10 @@ Allows the application writer to control which cores a task can run on.
 If `configUSE_CORE_AFFINITY` is defined as `1`, `vTaskCoreAffinitySet` can be
 used to control which cores a task can run on, and `vTaskCoreAffinityGet` can be
 used to query which cores a task can run on.
+
+## configUSE_TASK_PREEMPTION_DISABLE
+
+Allows the application writer to disable preemption on a per task basis. When
+`configUSE_TASK_PREEMPTION_DISABLE` is defined as `1`, `vTaskPreemptionDisable`
+and `vTaskPreemptionEnable` APIs can be used to disable and enable preemption on
+a per task basis.
