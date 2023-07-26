@@ -2,7 +2,7 @@
 
 ## Announcement:
 FreeRTOS SMP feature is merged into [FreeRTOS-Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/commit/ae3a498e435cecdb25b889f2740ea99027dd0cb1) main branch. 
-XCORE AI and Rasperry Pi Pico demos developed in this branch are also merged into [FreeRTOS](https://github.com/FreeRTOS/FreeRTOS) repostiory. We recommanded you to use the FreeRTOS main branch to development your application with SMP feature.
+XCORE AI and Rasperry Pi Pico demos developed in this branch are also merged into [FreeRTOS](https://github.com/FreeRTOS/FreeRTOS) repository. We recommanded you to use the FreeRTOS main branch to develop your application with SMP feature.
 
 The contents of this repository will remain available but we will no longer provide updates or accept new contributions and pull requests.
 
