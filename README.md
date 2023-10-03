@@ -1,3 +1,16 @@
+# ![image](https://user-images.githubusercontent.com/56273942/202568467-0ee721bb-1424-4efd-88fc-31b4f2a59dc6.png) DEPRECATED
+
+## Announcement:
+
+FreeRTOS SMP demos developed in this repository have been merged into the [FreeRTOS-Community-Supported-Demos](https://github.com/FreeRTOS/FreeRTOS-Community-Supported-Demos) repository. We recommend to use the demos available there.
+
+The contents of this repository will remain available but we will no longer provide updates or accept new contributions and pull requests.
+
+Have more questions? Post them in the [FreeRTOS forum](https://forums.freertos.org/).
+
+
+
+---
 This repository contains demo applications for the [Symmetric Multiprocessing (SMP)
 support in the FreeRTOS Kernel](https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/smp).
 See the following links for details of demo applications:
